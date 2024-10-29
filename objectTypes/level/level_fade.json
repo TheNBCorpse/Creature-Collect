@@ -1,0 +1,28 @@
+{
+	"name": "level_fade",
+	"plugin-id": "TiledBg",
+	"sid": 701745447162671,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 285697034318006
+		}
+	],
+	"effectTypes": [],
+	"image": {
+		"width": 250,
+		"height": 250,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"fileType": "image/png",
+		"imageSpriteId": 6722825,
+		"useCollisionPoly": true,
+		"tag": ""
+	}
+}

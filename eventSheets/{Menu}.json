@@ -1,0 +1,261 @@
+{
+	"name": "{Menu}",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 634670962921948
+				}
+			],
+			"actions": [
+				{
+					"id": "play",
+					"objectClass": "audio",
+					"sid": 403664255246477,
+					"parameters": {
+						"audio-file": "menu",
+						"loop": "looping",
+						"volume": "-2.5",
+						"stereo-pan": "0",
+						"tag-optional": "\"menu\""
+					}
+				},
+				{
+					"id": "flash",
+					"objectClass": "text_blink",
+					"sid": 890068469813059,
+					"behaviorType": "Flash",
+					"parameters": {
+						"on-time": "0.8",
+						"off-time": "0.35",
+						"duration": "Infinity"
+					}
+				}
+			],
+			"sid": 232291505926783
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "keyboard",
+					"sid": 881514307213832,
+					"parameters": {
+						"key": 32
+					}
+				},
+				{
+					"id": "compare-opacity",
+					"objectClass": "level_fade",
+					"sid": 920854400490228,
+					"parameters": {
+						"comparison": 0,
+						"opacity": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "fade-volume",
+					"objectClass": "audio",
+					"sid": 684709941463317,
+					"parameters": {
+						"tag": "\"menu\"",
+						"db": "-100",
+						"duration": "1.0",
+						"ending": "stop"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "level_fade",
+					"sid": 992624895028181,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"fade in\"",
+						"property": "offsetOpacity",
+						"end-value": "100",
+						"time": "1.0",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "wait-for-previous-actions",
+					"objectClass": "System",
+					"sid": 241082880742907
+				},
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 152933382146864,
+					"parameters": {
+						"layout": "Game"
+					}
+				}
+			],
+			"sid": 354179281359300
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "keyboard",
+					"sid": 344403836885570,
+					"parameters": {
+						"key": 87
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "player_image",
+					"sid": 966162020308400,
+					"parameters": {
+						"animation": "\"up\"",
+						"from": "beginning"
+					}
+				}
+			],
+			"sid": 820318141289995
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "keyboard",
+					"sid": 489770346159067,
+					"parameters": {
+						"key": 83
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "player_image",
+					"sid": 757426566839520,
+					"parameters": {
+						"animation": "\"down\"",
+						"from": "beginning"
+					}
+				}
+			],
+			"sid": 645317274906977
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "keyboard",
+					"sid": 296412717458932,
+					"parameters": {
+						"key": 65
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "player_image",
+					"sid": 427027469754644,
+					"parameters": {
+						"animation": "\"left\"",
+						"from": "beginning"
+					}
+				}
+			],
+			"sid": 630373949388363
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "keyboard",
+					"sid": 662099322013435,
+					"parameters": {
+						"key": 68
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "player_image",
+					"sid": 324412575978250,
+					"parameters": {
+						"animation": "\"right\"",
+						"from": "beginning"
+					}
+				}
+			],
+			"sid": 486528382570614
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "keyboard",
+					"sid": 817136205278854,
+					"parameters": {
+						"key": 87
+					},
+					"isInverted": true
+				},
+				{
+					"id": "key-is-down",
+					"objectClass": "keyboard",
+					"sid": 488106140668242,
+					"parameters": {
+						"key": 83
+					},
+					"isInverted": true
+				},
+				{
+					"id": "key-is-down",
+					"objectClass": "keyboard",
+					"sid": 724682500119413,
+					"parameters": {
+						"key": 65
+					},
+					"isInverted": true
+				},
+				{
+					"id": "key-is-down",
+					"objectClass": "keyboard",
+					"sid": 509513441170797,
+					"parameters": {
+						"key": 68
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "player_image",
+					"sid": 345891821830266,
+					"parameters": {
+						"animation": "\"idle\"",
+						"from": "beginning"
+					}
+				}
+			],
+			"sid": 350701658394168
+		}
+	],
+	"sid": 116744205655966
+}

@@ -1,0 +1,13 @@
+{
+	"name": "PARTICLES",
+	"plugin-id": "Particles",
+	"sid": 940347250443811,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"particle_leaves",
+		"particle_smoke",
+		"particle_star"
+	]
+}

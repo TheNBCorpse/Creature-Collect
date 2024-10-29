@@ -1,0 +1,14 @@
+{
+	"name": "LETHAL",
+	"plugin-id": "Sprite",
+	"sid": 618351484055642,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"enemy_turret",
+		"enemy_turret_bullet",
+		"enemy_tripleturret",
+		"enemy_movingturret"
+	]
+}

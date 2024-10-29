@@ -1,0 +1,12 @@
+{
+	"name": "SHADOWS",
+	"plugin-id": "Sprite",
+	"sid": 549944156647614,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"shadow_creature",
+		"shadow_player"
+	]
+}

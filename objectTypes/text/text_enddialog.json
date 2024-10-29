@@ -1,0 +1,28 @@
+{
+	"name": "text_enddialog",
+	"plugin-id": "Spritefont2",
+	"sid": 780892850784632,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 311391140803878
+		}
+	],
+	"effectTypes": [],
+	"image": {
+		"width": 780,
+		"height": 150,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"fileType": "image/png",
+		"imageSpriteId": 5399104,
+		"useCollisionPoly": true,
+		"tag": ""
+	}
+}

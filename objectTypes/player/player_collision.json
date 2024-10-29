@@ -1,0 +1,75 @@
+{
+	"name": "player_collision",
+	"plugin-id": "Sprite",
+	"sid": 549219850718220,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "dashing",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 675386430960055
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "EightDir",
+			"name": "8Direction",
+			"sid": 865884320626584
+		},
+		{
+			"behaviorId": "EightDir",
+			"name": "8Direction2",
+			"sid": 771764313096694
+		},
+		{
+			"behaviorId": "bound",
+			"name": "BoundToLayout",
+			"sid": 943200348638365
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 120,
+						"height": 120,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 1115175,
+						"collisionPoly": {
+							"points": [
+								0.08333333333333333,
+								0.08333333333333333,
+								0.9166666666666666,
+								0.08333333333333333,
+								0.9166666666666666,
+								0.9166666666666666,
+								0.08333333333333333,
+								0.9166666666666666
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 530122617016302,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

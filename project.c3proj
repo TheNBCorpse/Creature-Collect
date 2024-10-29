@@ -1,0 +1,686 @@
+{
+	"projectFormatVersion": 1,
+	"savedWithRelease": 41200,
+	"name": "LD56",
+	"runtime": "c3",
+	"useWorker": "auto",
+	"bundleAddons": false,
+	"usedAddons": [
+		{
+			"type": "plugin",
+			"id": "Audio",
+			"name": "Audio",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Browser",
+			"name": "Browser",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Keyboard",
+			"name": "Keyboard",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Mouse",
+			"name": "Mouse",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Particles",
+			"name": "Particles",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "PlatformInfo",
+			"name": "Platform info",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Sprite",
+			"name": "Sprite",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Spritefont2",
+			"name": "Sprite font",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Text",
+			"name": "Text",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "TiledBg",
+			"name": "Tiled Background",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Tilemap",
+			"name": "Tilemap",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Bullet",
+			"name": "Bullet",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "EightDir",
+			"name": "8 Direction",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Fade",
+			"name": "Fade",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Flash",
+			"name": "Flash",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Follow",
+			"name": "Follow",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "LOS",
+			"name": "Line of sight",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Rotate",
+			"name": "Rotate",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Sin",
+			"name": "Sine",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Timer",
+			"name": "Timer",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Turret",
+			"name": "Turret",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Tween",
+			"name": "Tween",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "bound",
+			"name": "Bound to layout",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "destroy",
+			"name": "Destroy outside layout",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "solid",
+			"name": "Solid",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "glowhorizontal",
+			"name": "Glow horizontal",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "glowvertical",
+			"name": "Glow vertical",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "waterbg",
+			"name": "Water background",
+			"author": "Viktor Korsun",
+			"bundled": false
+		}
+	],
+	"uniqueId": "y4pii6w9wec",
+	"objectTypes": {
+		"items": [],
+		"subfolders": [
+			{
+				"items": [
+					"audio",
+					"browser",
+					"keyboard",
+					"mouse",
+					"info"
+				],
+				"subfolders": [],
+				"name": "plugins"
+			},
+			{
+				"items": [
+					"level_room",
+					"level_roomscroll",
+					"level_bush",
+					"level_torch",
+					"level_secretdoor",
+					"level_checkpoint",
+					"level_fire",
+					"level_conveyor",
+					"level_secretarea",
+					"level_chattymode",
+					"level_fade"
+				],
+				"subfolders": [],
+				"name": "level"
+			},
+			{
+				"items": [
+					"player_collision",
+					"player_image",
+					"player_dashmeter_background",
+					"player_dashmeter",
+					"player_beam"
+				],
+				"subfolders": [],
+				"name": "player"
+			},
+			{
+				"items": [
+					"text_debug",
+					"text_collect",
+					"text_blank",
+					"text_enddialog",
+					"text_dialog_background",
+					"text_endstats",
+					"text_blink"
+				],
+				"subfolders": [],
+				"name": "text"
+			},
+			{
+				"items": [
+					"dump_1",
+					"dump_2",
+					"dump_3"
+				],
+				"subfolders": [],
+				"name": "dev"
+			},
+			{
+				"items": [
+					"particle_leaves",
+					"particle_torch",
+					"particle_smoke",
+					"particle_star"
+				],
+				"subfolders": [],
+				"name": "particles"
+			},
+			{
+				"items": [
+					"creature_bushl",
+					"creature_bushd",
+					"creature_maze",
+					"creature_speechbubble",
+					"creature_bushhidden",
+					"creature_door",
+					"creature_checkpoint",
+					"creature_coin",
+					"creature_hallway",
+					"creature_secret",
+					"creature_speed",
+					"creature_beam"
+				],
+				"subfolders": [],
+				"name": "creatures"
+			},
+			{
+				"items": [
+					"shadow_bush",
+					"shadow_creature",
+					"shadow_player"
+				],
+				"subfolders": [],
+				"name": "shadows"
+			},
+			{
+				"items": [
+					"enemy_turret",
+					"enemy_turret_target",
+					"enemy_turret_aimline",
+					"enemy_turret_bullet",
+					"enemy_tripleturret",
+					"enemy_movingturret",
+					"enemy_turret_ash"
+				],
+				"subfolders": [],
+				"name": "enemies"
+			},
+			{
+				"items": [
+					"ending_background",
+					"menu_background"
+				],
+				"subfolders": [],
+				"name": "menus"
+			}
+		]
+	},
+	"autosaveData": null,
+	"containers": [],
+	"families": {
+		"items": [
+			"PARTICLES",
+			"ORDERED",
+			"CREATURES",
+			"TARGETS",
+			"SHADOWS",
+			"LETHAL"
+		],
+		"subfolders": []
+	},
+	"layouts": {
+		"items": [
+			"Game",
+			"Ending",
+			"Menu"
+		],
+		"subfolders": []
+	},
+	"eventSheets": {
+		"items": [
+			"{Game}",
+			"{Ending}",
+			"{Menu}"
+		],
+		"subfolders": []
+	},
+	"rootFileFolders": {
+		"script": {
+			"items": [],
+			"subfolders": []
+		},
+		"sound": {
+			"items": [
+				{
+					"name": "door_break_old.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 848353161146938,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "door_break.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 548755046675890,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "creature_collect.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 920090378367554,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "turret_spot.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 441176992787892,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "turret_losetarget.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 684830170267009,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "target_gain.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 366835910411251,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "target_lose.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 826541058141084,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "target_find.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 565358057689416,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "turret_charge.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 897513190481111,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "creature_talkl.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 829416948787968,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "creature_talkh.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 264104368400163,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "creature_talkm.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 784131190545245,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "turret_fire.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 193133626617215,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "bullet_hit.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 382167273705341,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "rustle.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 825270194053498,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "player_fire.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 826351742735415,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "player_death.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 923982340482109,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
+			"subfolders": []
+		},
+		"music": {
+			"items": [
+				{
+					"name": "cheerful_song.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 523943758066879,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "secret_area.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 303642720019290,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "ending.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 407995245531474,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "menu.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 293412765536050,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
+			"subfolders": []
+		},
+		"video": {
+			"items": [],
+			"subfolders": []
+		},
+		"font": {
+			"items": [],
+			"subfolders": []
+		},
+		"icon": {
+			"items": [
+				{
+					"name": "icon-32.png",
+					"type": "image/png",
+					"sid": 584807323448386,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-16.png",
+					"type": "image/png",
+					"sid": 185326328217682,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-64.png",
+					"type": "image/png",
+					"sid": 231858193363285,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-128.png",
+					"type": "image/png",
+					"sid": 379055751479327,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-256.png",
+					"type": "image/png",
+					"sid": 675598045588807,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-512.png",
+					"type": "image/png",
+					"sid": 433727324170665,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "loading-logo.png",
+					"type": "image/png",
+					"sid": 605705037912833,
+					"icon-info": {
+						"purpose": "loading-logo"
+					}
+				}
+			],
+			"subfolders": []
+		},
+		"general": {
+			"items": [],
+			"subfolders": []
+		}
+	},
+	"timelines": {
+		"items": [],
+		"subfolders": [
+			{
+				"items": [],
+				"subfolders": []
+			}
+		]
+	},
+	"flowcharts": {
+		"items": [],
+		"subfolders": []
+	},
+	"properties": {
+		"description": "",
+		"version": "1.0.0",
+		"author": "TheNBCorpse",
+		"authorEmail": "thenbcorpse@gmail.com",
+		"authorWebsite": "",
+		"appId": "com.thenbcorpse.ld56",
+		"pixelRounding": false,
+		"zAxisScale": "regular",
+		"fov": 0.7853981633974483,
+		"useLoaderLayout": false,
+		"fullscreenMode": "letterbox-scale",
+		"fullscreenQuality": "high",
+		"viewportFit": "auto",
+		"backgroundColor": [
+			0,
+			0,
+			0,
+			0
+		],
+		"splashColor": [
+			1,
+			1,
+			1,
+			0
+		],
+		"useThemeColor": false,
+		"themeColor": [
+			1,
+			1,
+			1,
+			0
+		],
+		"orientations": "landscape",
+		"webgpu": "auto",
+		"gpuPreference": "high-performance",
+		"scriptsType": "module",
+		"framerateMode": "vsync",
+		"sampling": "trilinear",
+		"downscaling": "medium",
+		"renderingMode": "2d",
+		"anisotropicFiltering": "auto",
+		"zNear": 1,
+		"zFar": 10000,
+		"maxSpriteSheetSize": 2048,
+		"loaderStyle": "progress",
+		"preloadSounds": true,
+		"cordovaiOSScheme": "app",
+		"cordovaAndroidScheme": "https",
+		"autoReloadScriptsOnPreview": false,
+		"exportFileStructure": "folders",
+		"uidAllocationMode": "increment"
+	},
+	"viewportWidth": 1920,
+	"viewportHeight": 1080,
+	"firstLayout": "Menu"
+}

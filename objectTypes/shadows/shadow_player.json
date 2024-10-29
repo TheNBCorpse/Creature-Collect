@@ -1,0 +1,51 @@
+{
+	"name": "shadow_player",
+	"plugin-id": "Sprite",
+	"sid": 709146446296807,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 110,
+						"height": 50,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 4010655,
+						"collisionPoly": {
+							"points": [
+								0.18181818181818182,
+								0.4,
+								0.8181818181818182,
+								0.4,
+								0.8181818181818182,
+								0.6,
+								0.18181818181818182,
+								0.6
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 304191824281667,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

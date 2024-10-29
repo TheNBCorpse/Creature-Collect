@@ -1,0 +1,59 @@
+{
+	"name": "enemy_turret_target",
+	"plugin-id": "Sprite",
+	"sid": 446088853996591,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "turret",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 224554141679013
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 75,
+						"height": 75,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 235746,
+						"collisionPoly": {
+							"points": [
+								0.06666666666666667,
+								0.06666666666666667,
+								0.9333333333333333,
+								0.06666666666666667,
+								0.9333333333333333,
+								0.9333333333333333,
+								0.06666666666666667,
+								0.9333333333333333
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 657851006398995,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

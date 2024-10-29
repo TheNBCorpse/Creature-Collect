@@ -1,0 +1,12 @@
+{
+	"name": "ORDERED",
+	"plugin-id": "Sprite",
+	"sid": 528377206049679,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"level_bush",
+		"level_fire"
+	]
+}

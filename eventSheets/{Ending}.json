@@ -1,0 +1,135 @@
+{
+	"name": "{Ending}",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 110380209009235
+				}
+			],
+			"actions": [
+				{
+					"id": "stop-all",
+					"objectClass": "audio",
+					"sid": 346963192464657
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "level_fade",
+					"sid": 307293284570390,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"fade out\"",
+						"property": "offsetOpacity",
+						"end-value": "0",
+						"time": "1.0",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 248499206416431,
+					"parameters": {
+						"seconds": "0.5"
+					}
+				},
+				{
+					"id": "play",
+					"objectClass": "audio",
+					"sid": 527412152772278,
+					"parameters": {
+						"audio-file": "ending",
+						"loop": "looping",
+						"volume": "-10",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 335541327169377,
+					"parameters": {
+						"seconds": "0.5"
+					}
+				},
+				{
+					"id": "typewriter-text",
+					"objectClass": "text_endstats",
+					"sid": 103398942498987,
+					"disabled": true,
+					"parameters": {
+						"text": "\"Completion:\" & newline & (floor(collected) * 3) & \"%\" & newline & newline & \"Deaths:\" & newline & floor(deaths)",
+						"duration": "4.0"
+					}
+				}
+			],
+			"sid": 853465226640319,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 801092220923010,
+							"parameters": {
+								"variable": "collected",
+								"comparison": 2,
+								"value": "33"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "typewriter-text",
+							"objectClass": "text_endstats",
+							"sid": 134084143376627,
+							"parameters": {
+								"text": "\"Completion:\" & newline & collected * 3 & \"%\" & newline & newline & \"Deaths:\" & newline & deaths & newline & newline & \"Thanks for playing!\"",
+								"duration": "6.0"
+							}
+						}
+					],
+					"sid": 636626632876988
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 334671548041566,
+							"parameters": {
+								"variable": "collected",
+								"comparison": 0,
+								"value": "33"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "typewriter-text",
+							"objectClass": "text_endstats",
+							"sid": 924311063935802,
+							"parameters": {
+								"text": "\"Completion:\" & newline & \"100%\" & newline & newline & \"Deaths:\" & newline & deaths & newline & newline & \"Thanks for playing!\"",
+								"duration": "6.0"
+							}
+						}
+					],
+					"sid": 736220914566673
+				}
+			]
+		}
+	],
+	"sid": 992730831651094
+}

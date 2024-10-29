@@ -1,0 +1,29 @@
+{
+	"name": "TARGETS",
+	"plugin-id": "Sprite",
+	"sid": 514870317048152,
+	"instanceVariables": [
+		{
+			"name": "targetedby",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 702264523838186
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"creature_bushd",
+		"creature_bushhidden",
+		"creature_bushl",
+		"creature_door",
+		"creature_maze",
+		"creature_checkpoint",
+		"creature_coin",
+		"creature_hallway",
+		"creature_secret",
+		"creature_speed",
+		"creature_beam"
+	]
+}

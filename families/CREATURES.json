@@ -1,0 +1,59 @@
+{
+	"name": "CREATURES",
+	"plugin-id": "Sprite",
+	"sid": 169328248871999,
+	"instanceVariables": [
+		{
+			"name": "index",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 334332138895875
+		},
+		{
+			"name": "collected",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 482130725811386
+		},
+		{
+			"name": "message",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 114024580664834
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Sin",
+			"name": "Sine",
+			"sid": 801793606839361
+		},
+		{
+			"behaviorId": "Follow",
+			"name": "Follow",
+			"sid": 593776486546485
+		},
+		{
+			"behaviorId": "Rotate",
+			"name": "Rotate",
+			"sid": 227425786100899
+		}
+	],
+	"effectTypes": [],
+	"members": [
+		"creature_bushl",
+		"creature_bushd",
+		"creature_maze",
+		"creature_bushhidden",
+		"creature_door",
+		"creature_checkpoint",
+		"creature_coin",
+		"creature_hallway",
+		"creature_secret",
+		"creature_speed",
+		"creature_beam"
+	]
+}

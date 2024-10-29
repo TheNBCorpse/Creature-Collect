@@ -1,0 +1,33 @@
+{
+	"name": "text_blink",
+	"plugin-id": "Spritefont2",
+	"sid": 644255799363231,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 393021416735604
+		},
+		{
+			"behaviorId": "Flash",
+			"name": "Flash",
+			"sid": 685959643851464
+		}
+	],
+	"effectTypes": [],
+	"image": {
+		"width": 780,
+		"height": 150,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"fileType": "image/png",
+		"imageSpriteId": 5302251,
+		"useCollisionPoly": true,
+		"tag": ""
+	}
+}

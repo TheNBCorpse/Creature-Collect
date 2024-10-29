@@ -1,0 +1,51 @@
+{
+	"name": "text_dialog_background",
+	"plugin-id": "Sprite",
+	"sid": 891355738439071,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 1210,
+						"height": 130,
+						"originX": 0.004132231404958678,
+						"originY": 0.038461538461538464,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 9914320,
+						"collisionPoly": {
+							"points": [
+								0.39669421487603307,
+								0.038461538461538464,
+								0.6033057851239669,
+								0.038461538461538464,
+								0.6033057851239669,
+								0.9615384615384616,
+								0.39669421487603307,
+								0.9615384615384616
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 412749508047576,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

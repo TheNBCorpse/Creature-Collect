@@ -1,0 +1,5964 @@
+{
+	"name": "{Game}",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "checkpointx",
+			"type": "number",
+			"initialValue": "960",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 234609246344949
+		},
+		{
+			"eventType": "variable",
+			"name": "checkpointy",
+			"type": "number",
+			"initialValue": "540",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 497374710240414
+		},
+		{
+			"eventType": "variable",
+			"name": "chattymode",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": true,
+			"isConstant": false,
+			"sid": 849304136181446
+		},
+		{
+			"eventType": "variable",
+			"name": "collected",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 311895173997246
+		},
+		{
+			"eventType": "variable",
+			"name": "deaths",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 351777050217198
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "misc",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 127997096037636
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position-to-another-object",
+							"objectClass": "player_image",
+							"sid": 178599289582222,
+							"parameters": {
+								"object": "player_collision",
+								"image-point-optional": "0"
+							}
+						},
+						{
+							"id": "add-child",
+							"objectClass": "player_collision",
+							"sid": 320462965155808,
+							"parameters": {
+								"child": "player_image",
+								"transform-x": true,
+								"transform-y": true,
+								"transform-w": false,
+								"transform-h": false,
+								"transform-a": false,
+								"transform-o": false,
+								"transform-z-elevation": true,
+								"transform-visibility": false,
+								"destroy-with-parent": true
+							}
+						},
+						{
+							"id": "destroy",
+							"objectClass": "enemy_turret_target",
+							"sid": 949569732085657
+						},
+						{
+							"id": "add-object-to-target",
+							"objectClass": "enemy_turret",
+							"sid": 675191199033891,
+							"disabled": true,
+							"behaviorType": "Turret",
+							"parameters": {
+								"target": "TARGETS"
+							}
+						},
+						{
+							"id": "add-obstacle",
+							"objectClass": "enemy_turret",
+							"sid": 425031773989304,
+							"disabled": true,
+							"behaviorType": "LineOfSight",
+							"parameters": {
+								"obstacle": "level_room"
+							}
+						},
+						{
+							"id": "play",
+							"objectClass": "audio",
+							"sid": 467080477780384,
+							"parameters": {
+								"audio-file": "cheerful_song",
+								"loop": "looping",
+								"volume": "-5",
+								"stereo-pan": "0",
+								"tag-optional": "\"music\""
+							}
+						},
+						{
+							"id": "play",
+							"objectClass": "audio",
+							"sid": 167952891072088,
+							"parameters": {
+								"audio-file": "secret_area",
+								"loop": "looping",
+								"volume": "-100",
+								"stereo-pan": "0",
+								"tag-optional": "\"music?\""
+							}
+						},
+						{
+							"id": "set-position-to-another-object",
+							"objectClass": "shadow_player",
+							"sid": 388270473855575,
+							"parameters": {
+								"object": "player_image",
+								"image-point-optional": "1"
+							}
+						},
+						{
+							"id": "add-child",
+							"objectClass": "player_image",
+							"sid": 951932061176686,
+							"parameters": {
+								"child": "shadow_player",
+								"transform-x": true,
+								"transform-y": true,
+								"transform-w": true,
+								"transform-h": false,
+								"transform-a": false,
+								"transform-o": false,
+								"transform-z-elevation": false,
+								"transform-visibility": false,
+								"destroy-with-parent": true
+							}
+						},
+						{
+							"id": "move-to-bottom",
+							"objectClass": "level_secretdoor",
+							"sid": 818279358401556
+						},
+						{
+							"id": "move-to-bottom",
+							"objectClass": "level_conveyor",
+							"sid": 486918389106513
+						},
+						{
+							"id": "add-obstacle",
+							"objectClass": "enemy_turret",
+							"sid": 771805716396103,
+							"behaviorType": "LineOfSight",
+							"parameters": {
+								"obstacle": "level_room"
+							}
+						},
+						{
+							"id": "add-obstacle",
+							"objectClass": "enemy_turret",
+							"sid": 462582634859925,
+							"behaviorType": "LineOfSight",
+							"parameters": {
+								"obstacle": "level_secretdoor"
+							}
+						},
+						{
+							"id": "add-child",
+							"objectClass": "text_enddialog",
+							"sid": 644465205537957,
+							"parameters": {
+								"child": "text_dialog_background",
+								"transform-x": false,
+								"transform-y": false,
+								"transform-w": false,
+								"transform-h": false,
+								"transform-a": false,
+								"transform-o": true,
+								"transform-z-elevation": false,
+								"transform-visibility": false,
+								"destroy-with-parent": false
+							}
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "level_fade",
+							"sid": 424849541455053,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"fade out\"",
+								"property": "offsetOpacity",
+								"end-value": "0",
+								"time": "1.0",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "scroll-to-object",
+							"objectClass": "System",
+							"sid": 877501519848816,
+							"parameters": {
+								"object": "player_collision"
+							}
+						}
+					],
+					"sid": 464643762045515,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 743643987478251,
+									"parameters": {
+										"object": "level_room"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 460640608553058,
+									"parameters": {
+										"object-to-create": "level_roomscroll",
+										"layer": "2",
+										"x": "level_room.X + level_room.Width / 2",
+										"y": "level_room.Y + level_room.Height / 2",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								}
+							],
+							"sid": 227731806272976
+						},
+						{
+							"eventType": "variable",
+							"name": "color",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": true,
+							"isConstant": false,
+							"sid": 882053262885481
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 753879215424088,
+									"parameters": {
+										"object": "level_bush"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 971607170166988,
+									"parameters": {
+										"variable": "color",
+										"value": "random(185, 285)"
+									}
+								},
+								{
+									"id": "set-default-color",
+									"objectClass": "level_bush",
+									"sid": 165612946768921,
+									"parameters": {
+										"color": "rgbEx255(color, color, color)"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "level_bush",
+									"sid": 593825565861536,
+									"parameters": {
+										"instance-variable": "color",
+										"value": "color"
+									}
+								},
+								{
+									"id": "spawn-another-object",
+									"objectClass": "level_bush",
+									"sid": 311354235120836,
+									"parameters": {
+										"object": "shadow_bush",
+										"layer": "0",
+										"image-point": "2",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								}
+							],
+							"sid": 484024136123737
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 260230009989710,
+									"parameters": {
+										"object": "CREATURES"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 855321900205064,
+									"parameters": {
+										"object-to-create": "shadow_creature",
+										"layer": "0",
+										"x": "CREATURES.X",
+										"y": "CREATURES.Y + 60",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "add-child",
+									"objectClass": "CREATURES",
+									"sid": 631731209177709,
+									"parameters": {
+										"child": "shadow_creature",
+										"transform-x": true,
+										"transform-y": true,
+										"transform-w": true,
+										"transform-h": false,
+										"transform-a": false,
+										"transform-o": false,
+										"transform-z-elevation": false,
+										"transform-visibility": false,
+										"destroy-with-parent": true
+									}
+								},
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 688191783580259,
+									"parameters": {
+										"object-to-create": "creature_speechbubble",
+										"layer": "4",
+										"x": "CREATURES.X",
+										"y": "CREATURES.Y",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "creature_speechbubble",
+									"sid": 969357165046080,
+									"parameters": {
+										"instance-variable": "belongsto",
+										"value": "CREATURES.UID"
+									}
+								},
+								{
+									"id": "add-child",
+									"objectClass": "CREATURES",
+									"sid": 906601962859109,
+									"parameters": {
+										"child": "creature_speechbubble",
+										"transform-x": true,
+										"transform-y": true,
+										"transform-w": false,
+										"transform-h": false,
+										"transform-a": false,
+										"transform-o": false,
+										"transform-z-elevation": true,
+										"transform-visibility": false,
+										"destroy-with-parent": true
+									}
+								}
+							],
+							"sid": 114843187238922
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 873587996377485,
+									"parameters": {
+										"object": "level_torch"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 704942825075651,
+									"parameters": {
+										"object-to-create": "particle_torch",
+										"layer": "3",
+										"x": "level_torch.ImagePointX(1)",
+										"y": "level_torch.ImagePointY(1)",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								}
+							],
+							"sid": 661752999162945
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 293189905167307,
+									"parameters": {
+										"object": "enemy_turret"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 827525430620511,
+									"parameters": {
+										"object-to-create": "enemy_turret_target",
+										"layer": "4",
+										"x": "enemy_turret.X",
+										"y": "enemy_turret.Y",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "add-child",
+									"objectClass": "enemy_turret",
+									"sid": 544870477560020,
+									"parameters": {
+										"child": "enemy_turret_target",
+										"transform-x": false,
+										"transform-y": false,
+										"transform-w": false,
+										"transform-h": false,
+										"transform-a": false,
+										"transform-o": false,
+										"transform-z-elevation": false,
+										"transform-visibility": false,
+										"destroy-with-parent": true
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "enemy_turret",
+									"sid": 332583700596920,
+									"parameters": {
+										"instance-variable": "aimer",
+										"value": "enemy_turret_target.UID"
+									}
+								},
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 572392982740254,
+									"disabled": true,
+									"parameters": {
+										"object-to-create": "enemy_turret_aimline",
+										"layer": "4",
+										"x": "-100",
+										"y": "-100",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "enemy_turret_aimline",
+									"sid": 750051129823265,
+									"disabled": true,
+									"parameters": {
+										"instance-variable": "aimer",
+										"value": "enemy_turret_target.UID"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "enemy_turret_aimline",
+									"sid": 539988087904982,
+									"disabled": true,
+									"parameters": {
+										"instance-variable": "turret",
+										"value": "enemy_turret.UID"
+									}
+								}
+							],
+							"sid": 867917313023957
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 764879937249946,
+									"parameters": {
+										"object": "enemy_tripleturret"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "enemy_tripleturret",
+									"sid": 285307089821838,
+									"parameters": {
+										"instance-variable": "initialangle",
+										"value": "Self.Angle"
+									}
+								}
+							],
+							"sid": 624854547326008
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-tick",
+							"objectClass": "System",
+							"sid": 341462650223444
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "text_debug",
+							"sid": 914658606137318,
+							"parameters": {
+								"text": "info.FramesPerSecond & \"/\" & info.TicksPerSecond & newline & roundToDp(cpuutilisation, 1) & \"%/\" & roundToDp(gpuutilisation, 1) & \"%\""
+							}
+						},
+						{
+							"id": "set-effect-parameter",
+							"objectClass": "level_checkpoint",
+							"sid": 484291601835838,
+							"parameters": {
+								"effect": "\"GlowHorizontal\"",
+								"parameter-index": "0",
+								"value": "50 + Self.Sine.Value"
+							}
+						},
+						{
+							"id": "set-effect-parameter",
+							"objectClass": "level_checkpoint",
+							"sid": 169874348917214,
+							"parameters": {
+								"effect": "\"GlowVertical\"",
+								"parameter-index": "0",
+								"value": "50 + Self.Sine.Value"
+							}
+						},
+						{
+							"id": "set-effect-parameter",
+							"objectClass": "player_beam",
+							"sid": 620339889823566,
+							"parameters": {
+								"effect": "\"GlowHorizontal\"",
+								"parameter-index": "0",
+								"value": "50 + Self.Sine.Value"
+							}
+						},
+						{
+							"id": "set-effect-parameter",
+							"objectClass": "player_beam",
+							"sid": 823136482777636,
+							"parameters": {
+								"effect": "\"GlowVertical\"",
+								"parameter-index": "0",
+								"value": "50 + Self.Sine.Value"
+							}
+						}
+					],
+					"sid": 209769845659436,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-nearestfurthest",
+									"objectClass": "level_roomscroll",
+									"sid": 792183171754436,
+									"parameters": {
+										"which": "nearest",
+										"x": "player_collision.X",
+										"y": "player_collision.Y"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "scroll-to-position",
+									"objectClass": "System",
+									"sid": 659882408478138,
+									"parameters": {
+										"x": "lerp(scrollx, level_roomscroll.X, 10 * dt)",
+										"y": "lerp(scrolly, level_roomscroll.Y, 10 * dt)"
+									}
+								}
+							],
+							"sid": 798930511273755,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 763761099471732,
+									"parameters": {
+										"object": "enemy_turret_aimline"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 517916163382544,
+							"disabled": true,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "enemy_turret",
+											"sid": 525854416095220,
+											"parameters": {
+												"unique-id": "enemy_turret_aimline.turret"
+											}
+										},
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "enemy_turret_target",
+											"sid": 232989209227771,
+											"parameters": {
+												"unique-id": "enemy_turret_aimline.aimer"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position-to-another-object",
+											"objectClass": "enemy_turret_aimline",
+											"sid": 577725881486942,
+											"parameters": {
+												"object": "enemy_turret_target",
+												"image-point-optional": "0"
+											}
+										},
+										{
+											"id": "set-angle-toward-position",
+											"objectClass": "enemy_turret_aimline",
+											"sid": 265508316915022,
+											"parameters": {
+												"x": "enemy_turret.X",
+												"y": "enemy_turret.Y"
+											}
+										},
+										{
+											"id": "set-width",
+											"objectClass": "enemy_turret_aimline",
+											"sid": 695771520523412,
+											"parameters": {
+												"width": "distance(enemy_turret_target.X, enemy_turret_target.Y, enemy_turret.X, enemy_turret.Y)"
+											}
+										}
+									],
+									"sid": 434577906154680,
+									"disabled": true
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 993364138525120,
+									"parameters": {
+										"object": "SHADOWS"
+									}
+								},
+								{
+									"id": "pick-nearestfurthest",
+									"objectClass": "level_fire",
+									"sid": 623774325532189,
+									"parameters": {
+										"which": "nearest",
+										"x": "SHADOWS.X",
+										"y": "SHADOWS.Y"
+									}
+								},
+								{
+									"id": "is-on-screen",
+									"objectClass": "level_fire",
+									"sid": 330734170757999
+								}
+							],
+							"actions": [
+								{
+									"id": "set-opacity",
+									"objectClass": "SHADOWS",
+									"sid": 831031402341217,
+									"parameters": {
+										"opacity": "clamp(distance(SHADOWS.X, SHADOWS.Y, level_fire.X, level_fire.Y) / 10, 0, 40)"
+									}
+								}
+							],
+							"sid": 678285234099811
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "keyboard",
+							"sid": 230374114671950,
+							"parameters": {
+								"key": 32
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "player_collision",
+							"sid": 921326653294858,
+							"parameters": {
+								"x": "300",
+								"y": "300"
+							}
+						}
+					],
+					"sid": 578325593815226,
+					"disabled": true
+				}
+			],
+			"sid": 703451192636949
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "player",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "keyboard",
+							"sid": 769628073851114,
+							"parameters": {
+								"key": 87
+							}
+						},
+						{
+							"id": "is-enabled",
+							"objectClass": "player_collision",
+							"sid": 517215458838248,
+							"behaviorType": "8Direction"
+						},
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 694423313425538,
+							"parameters": {
+								"variable": "chattymode"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "simulate-control",
+							"objectClass": "player_collision",
+							"sid": 580068392093458,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"control": "up"
+							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "player_image",
+							"sid": 542911576102017,
+							"parameters": {
+								"animation": "\"up\"",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 322022748483578
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "keyboard",
+							"sid": 895321113735670,
+							"parameters": {
+								"key": 83
+							}
+						},
+						{
+							"id": "is-enabled",
+							"objectClass": "player_collision",
+							"sid": 658235946584950,
+							"behaviorType": "8Direction"
+						},
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 990444818666138,
+							"parameters": {
+								"variable": "chattymode"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "simulate-control",
+							"objectClass": "player_collision",
+							"sid": 994490254319963,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"control": "down"
+							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "player_image",
+							"sid": 585400240274760,
+							"parameters": {
+								"animation": "\"down\"",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 305508007980882
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "keyboard",
+							"sid": 430523249489309,
+							"parameters": {
+								"key": 65
+							}
+						},
+						{
+							"id": "is-enabled",
+							"objectClass": "player_collision",
+							"sid": 334780519932930,
+							"behaviorType": "8Direction"
+						},
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 404721422642169,
+							"parameters": {
+								"variable": "chattymode"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "simulate-control",
+							"objectClass": "player_collision",
+							"sid": 397979852077795,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"control": "left"
+							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "player_image",
+							"sid": 516144209023626,
+							"parameters": {
+								"animation": "\"left\"",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 965042534399676
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "keyboard",
+							"sid": 116434738666471,
+							"parameters": {
+								"key": 68
+							}
+						},
+						{
+							"id": "is-enabled",
+							"objectClass": "player_collision",
+							"sid": 984294577839026,
+							"behaviorType": "8Direction"
+						},
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 636092853163845,
+							"parameters": {
+								"variable": "chattymode"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "simulate-control",
+							"objectClass": "player_collision",
+							"sid": 555080693768540,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"control": "right"
+							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "player_image",
+							"sid": 325978134902870,
+							"parameters": {
+								"animation": "\"right\"",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 952205765700841
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-moving",
+							"objectClass": "player_collision",
+							"sid": 744615925768900,
+							"behaviorType": "8Direction",
+							"isInverted": true
+						},
+						{
+							"id": "is-animation-playing",
+							"objectClass": "player_image",
+							"sid": 565886331604046,
+							"parameters": {
+								"animation": "\"idle\""
+							},
+							"isInverted": true
+						},
+						{
+							"id": "is-enabled",
+							"objectClass": "player_collision",
+							"sid": 379437862415775,
+							"behaviorType": "8Direction"
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "player_image",
+							"sid": 619004880848765,
+							"parameters": {
+								"animation": "\"idle\"",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 200812397231474
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 639710301153131,
+							"parameters": {
+								"object": "ORDERED"
+							}
+						},
+						{
+							"id": "compare-y",
+							"objectClass": "player_collision",
+							"sid": 760157177645596,
+							"parameters": {
+								"comparison": 4,
+								"y-co-ordinate": "ORDERED.ImagePointY(1)"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "move-to-object",
+							"objectClass": "ORDERED",
+							"sid": 114303718816802,
+							"parameters": {
+								"where": "behind",
+								"object": "player_image"
+							}
+						}
+					],
+					"sid": 952067081363775
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 267851287203159,
+							"parameters": {
+								"object": "ORDERED"
+							}
+						},
+						{
+							"id": "compare-y",
+							"objectClass": "player_collision",
+							"sid": 637279293635454,
+							"parameters": {
+								"comparison": 2,
+								"y-co-ordinate": "ORDERED.ImagePointY(1)"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "move-to-object",
+							"objectClass": "ORDERED",
+							"sid": 579855170698167,
+							"parameters": {
+								"where": "in-front",
+								"object": "player_image"
+							}
+						}
+					],
+					"sid": 503623743966164
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-moving",
+							"objectClass": "player_collision",
+							"sid": 986164994878431,
+							"behaviorType": "8Direction"
+						},
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "player_collision",
+							"sid": 196505964630523,
+							"parameters": {
+								"object": "level_bush"
+							}
+						},
+						{
+							"id": "every-x-seconds",
+							"objectClass": "System",
+							"sid": 684575257894293,
+							"parameters": {
+								"interval-seconds": "0.25"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 774168082258816,
+							"parameters": {
+								"object-to-create": "particle_leaves",
+								"layer": "3",
+								"x": "player_collision.X",
+								"y": "player_collision.Y",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-default-color",
+							"objectClass": "particle_leaves",
+							"sid": 396586876174212,
+							"parameters": {
+								"color": "rgbEx255(level_bush.color, level_bush.color, level_bush.color)"
+							}
+						},
+						{
+							"id": "play",
+							"objectClass": "audio",
+							"sid": 115290702602924,
+							"parameters": {
+								"audio-file": "rustle",
+								"loop": "not-looping",
+								"volume": "-10",
+								"stereo-pan": "0",
+								"tag-optional": "\"\""
+							}
+						}
+					],
+					"sid": 829621775168359
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "LETHAL",
+							"sid": 172741705675003,
+							"parameters": {
+								"object": "player_image"
+							}
+						},
+						{
+							"id": "is-enabled",
+							"objectClass": "player_collision",
+							"sid": 456092180931219,
+							"behaviorType": "8Direction"
+						}
+					],
+					"actions": [
+						{
+							"id": "set-enabled",
+							"objectClass": "player_collision",
+							"sid": 357952880243430,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"state": "disabled"
+							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "player_image",
+							"sid": 117483468405670,
+							"parameters": {
+								"animation": "\"death\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "play",
+							"objectClass": "audio",
+							"sid": 327982756681967,
+							"parameters": {
+								"audio-file": "player_death",
+								"loop": "not-looping",
+								"volume": "5",
+								"stereo-pan": "0",
+								"tag-optional": "\"\""
+							}
+						},
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 406370781676667,
+							"parameters": {
+								"variable": "deaths",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 405532435719856
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-animation-finished",
+							"objectClass": "player_image",
+							"sid": 962326951536238,
+							"parameters": {
+								"animation": "\"death\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "player_collision",
+							"sid": 472253066243452,
+							"parameters": {
+								"x": "checkpointx",
+								"y": "checkpointy"
+							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "player_collision",
+							"sid": 353652298481202,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"state": "enabled"
+							}
+						},
+						{
+							"id": "flash",
+							"objectClass": "player_image",
+							"sid": 415895002362403,
+							"behaviorType": "Flash",
+							"parameters": {
+								"on-time": "0.1",
+								"off-time": "0.1",
+								"duration": "1.0"
+							}
+						}
+					],
+					"sid": 915631608659472
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "shadow_player",
+							"sid": 379451527400140,
+							"parameters": {
+								"object": "level_room"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "shadow_player",
+							"sid": 989280114669204,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 688665277623015
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 517741194703828
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "shadow_player",
+							"sid": 794101687055635,
+							"parameters": {
+								"visibility": "visible"
+							}
+						}
+					],
+					"sid": 923744338877712
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "player_collision",
+							"sid": 517081882982692,
+							"parameters": {
+								"object": "level_conveyor"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 246377470079191,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "level_conveyor",
+									"sid": 553349015463004,
+									"parameters": {
+										"animation": "\"up\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "player_collision",
+									"sid": 241270063621009,
+									"behaviorType": "8Direction2",
+									"parameters": {
+										"control": "up"
+									}
+								}
+							],
+							"sid": 103602104357137
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "level_conveyor",
+									"sid": 565479929292517,
+									"parameters": {
+										"animation": "\"left\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "player_collision",
+									"sid": 386067641769012,
+									"behaviorType": "8Direction2",
+									"parameters": {
+										"control": "left"
+									}
+								}
+							],
+							"sid": 936195558761112
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "level_conveyor",
+									"sid": 133400285990479,
+									"parameters": {
+										"animation": "\"down\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "player_collision",
+									"sid": 434122346841095,
+									"behaviorType": "8Direction2",
+									"parameters": {
+										"control": "down"
+									}
+								}
+							],
+							"sid": 363594928549859
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "level_conveyor",
+									"sid": 582176266004601,
+									"parameters": {
+										"animation": "\"right\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "player_collision",
+									"sid": 980458497399138,
+									"behaviorType": "8Direction2",
+									"parameters": {
+										"control": "right"
+									}
+								}
+							],
+							"sid": 138253814601664
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "player_collision",
+							"sid": 369893018769103,
+							"parameters": {
+								"object": "level_secretarea"
+							}
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 303275156186691
+						}
+					],
+					"actions": [
+						{
+							"id": "fade-volume",
+							"objectClass": "audio",
+							"sid": 630907078121919,
+							"parameters": {
+								"tag": "\"music\"",
+								"db": "-100",
+								"duration": "3.0",
+								"ending": "keep-playing"
+							}
+						},
+						{
+							"id": "fade-volume",
+							"objectClass": "audio",
+							"sid": 239061161840543,
+							"parameters": {
+								"tag": "\"music?\"",
+								"db": "-3",
+								"duration": "3.0",
+								"ending": "keep-playing"
+							}
+						}
+					],
+					"sid": 685031302040742
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "player_collision",
+							"sid": 655830043201179,
+							"parameters": {
+								"object": "level_secretarea"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 355098120026013,
+							"parameters": {
+								"variable": "chattymode"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 441202123286393
+						}
+					],
+					"actions": [
+						{
+							"id": "fade-volume",
+							"objectClass": "audio",
+							"sid": 996308975251430,
+							"parameters": {
+								"tag": "\"music\"",
+								"db": "-5",
+								"duration": "3.0",
+								"ending": "keep-playing"
+							}
+						},
+						{
+							"id": "fade-volume",
+							"objectClass": "audio",
+							"sid": 108639925342524,
+							"parameters": {
+								"tag": "\"music?\"",
+								"db": "-100",
+								"duration": "3.0",
+								"ending": "keep-playing"
+							}
+						}
+					],
+					"sid": 163950411581825
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "player_collision",
+							"sid": 608374952522361,
+							"parameters": {
+								"instance-variable": "dashing"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "compare-width",
+							"objectClass": "player_dashmeter",
+							"sid": 424341371878207,
+							"parameters": {
+								"comparison": 2,
+								"width": "240"
+							}
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "creature_speed",
+							"sid": 380905335259991,
+							"parameters": {
+								"instance-variable": "collected"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-width",
+							"objectClass": "player_dashmeter",
+							"sid": 802671208954848,
+							"parameters": {
+								"width": "Self.Width + 90 * dt"
+							}
+						}
+					],
+					"sid": 249829723932227,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-overlapping-another-object",
+									"objectClass": "player_collision",
+									"sid": 592004568690002,
+									"parameters": {
+										"object": "level_conveyor"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-max-speed",
+									"objectClass": "player_collision",
+									"sid": 268327659312948,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"max-speed": "0"
+									}
+								},
+								{
+									"id": "set-acceleration",
+									"objectClass": "player_collision",
+									"sid": 102110010097688,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"acceleration": "0"
+									}
+								},
+								{
+									"id": "set-deceleration",
+									"objectClass": "player_collision",
+									"sid": 618660686075636,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"deceleration": "0"
+									}
+								}
+							],
+							"sid": 410445525350848
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-overlapping-another-object",
+									"objectClass": "player_collision",
+									"sid": 698770199152585,
+									"parameters": {
+										"object": "level_conveyor"
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-max-speed",
+									"objectClass": "player_collision",
+									"sid": 358297368312194,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"max-speed": "300"
+									}
+								},
+								{
+									"id": "set-acceleration",
+									"objectClass": "player_collision",
+									"sid": 618423343124318,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"acceleration": "3000"
+									}
+								},
+								{
+									"id": "set-deceleration",
+									"objectClass": "player_collision",
+									"sid": 450473670343552,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"deceleration": "3000"
+									}
+								}
+							],
+							"sid": 365002070143972
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "player_collision",
+							"sid": 216756266729643,
+							"parameters": {
+								"instance-variable": "dashing"
+							}
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "creature_speed",
+							"sid": 569352756776521,
+							"parameters": {
+								"instance-variable": "collected"
+							}
+						},
+						{
+							"id": "compare-width",
+							"objectClass": "player_dashmeter",
+							"sid": 944612838472826,
+							"parameters": {
+								"comparison": 4,
+								"width": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-width",
+							"objectClass": "player_dashmeter",
+							"sid": 899395961882788,
+							"parameters": {
+								"width": "Self.Width - 130 * dt"
+							}
+						},
+						{
+							"id": "set-max-speed",
+							"objectClass": "player_collision",
+							"sid": 908245096497471,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"max-speed": "735"
+							}
+						},
+						{
+							"id": "set-acceleration",
+							"objectClass": "player_collision",
+							"sid": 981863887608608,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"acceleration": "7350"
+							}
+						},
+						{
+							"id": "set-deceleration",
+							"objectClass": "player_collision",
+							"sid": 100248941668036,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"deceleration": "7350"
+							}
+						}
+					],
+					"sid": 924474563471535
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "creature_speed",
+							"sid": 226987348175317,
+							"parameters": {
+								"instance-variable": "collected"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "player_dashmeter",
+							"sid": 751197365383481,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "player_dashmeter_background",
+							"sid": 384138139328185,
+							"parameters": {
+								"visibility": "visible"
+							}
+						}
+					],
+					"sid": 473455745212334
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-click",
+							"objectClass": "mouse",
+							"sid": 934834120682414,
+							"parameters": {
+								"mouse-button": "right",
+								"click-type": "clicked"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "player_collision",
+							"sid": 714263177132204,
+							"parameters": {
+								"instance-variable": "dashing",
+								"value": "true"
+							}
+						}
+					],
+					"sid": 303916315344761
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-button-released",
+							"objectClass": "mouse",
+							"sid": 272164517454247,
+							"parameters": {
+								"mouse-button": "right"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "player_collision",
+							"sid": 307973381612084,
+							"parameters": {
+								"instance-variable": "dashing",
+								"value": "false"
+							}
+						}
+					],
+					"sid": 468497676389213
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-width",
+							"objectClass": "player_dashmeter",
+							"sid": 419245005211839,
+							"parameters": {
+								"comparison": 3,
+								"width": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "player_collision",
+							"sid": 969807202756068,
+							"parameters": {
+								"instance-variable": "dashing",
+								"value": "false"
+							}
+						},
+						{
+							"id": "set-width",
+							"objectClass": "player_dashmeter",
+							"sid": 350088470425859,
+							"parameters": {
+								"width": "0"
+							}
+						}
+					],
+					"sid": 632573550806789
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-width",
+							"objectClass": "player_dashmeter",
+							"sid": 651298679666698,
+							"parameters": {
+								"comparison": 5,
+								"width": "240"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-width",
+							"objectClass": "player_dashmeter",
+							"sid": 803924033923714,
+							"parameters": {
+								"width": "240"
+							}
+						},
+						{
+							"id": "set-max-speed",
+							"objectClass": "player_collision",
+							"sid": 531923327638003,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"max-speed": "420"
+							}
+						},
+						{
+							"id": "set-acceleration",
+							"objectClass": "player_collision",
+							"sid": 401680387871622,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"acceleration": "4200"
+							}
+						},
+						{
+							"id": "set-deceleration",
+							"objectClass": "player_collision",
+							"sid": 143276874761730,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"deceleration": "4200"
+							}
+						}
+					],
+					"sid": 573171969991648
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-click",
+							"objectClass": "mouse",
+							"sid": 236134327170369,
+							"parameters": {
+								"mouse-button": "left",
+								"click-type": "clicked"
+							}
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "creature_beam",
+							"sid": 163130822644241,
+							"parameters": {
+								"instance-variable": "collected"
+							}
+						},
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 504765542435364,
+							"parameters": {
+								"first-value": "player_beam.Count",
+								"comparison": 0,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 895776133444373,
+							"parameters": {
+								"object-to-create": "player_beam",
+								"layer": "3",
+								"x": "player_collision.X",
+								"y": "player_collision.Y",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-angle-toward-position",
+							"objectClass": "player_beam",
+							"sid": 681431637325363,
+							"parameters": {
+								"x": "mouse.X",
+								"y": "mouse.Y"
+							}
+						},
+						{
+							"id": "play",
+							"objectClass": "audio",
+							"sid": 257947030057477,
+							"parameters": {
+								"audio-file": "player_fire",
+								"loop": "not-looping",
+								"volume": "0",
+								"stereo-pan": "0",
+								"tag-optional": "\"\""
+							}
+						}
+					],
+					"sid": 794559999100361
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "creature_beam",
+							"sid": 470687221658036,
+							"parameters": {
+								"instance-variable": "collected"
+							}
+						},
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 401259131309923,
+							"parameters": {
+								"first-value": "player_beam.Count",
+								"comparison": 0,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-cursor-style",
+							"objectClass": "mouse",
+							"sid": 133371515035964,
+							"parameters": {
+								"cursor-style": "crosshair"
+							}
+						}
+					],
+					"sid": 859198874997698
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "creature_beam",
+							"sid": 405389339877405,
+							"parameters": {
+								"instance-variable": "collected"
+							}
+						},
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 975630244449992,
+							"parameters": {
+								"first-value": "player_beam.Count",
+								"comparison": 4,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-cursor-style",
+							"objectClass": "mouse",
+							"sid": 979088726171531,
+							"parameters": {
+								"cursor-style": "wait"
+							}
+						}
+					],
+					"sid": 640169256491801
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "creature_beam",
+							"sid": 765390656161067,
+							"parameters": {
+								"instance-variable": "collected"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-cursor-style",
+							"objectClass": "mouse",
+							"sid": 426634209437650,
+							"parameters": {
+								"cursor-style": "normal"
+							}
+						}
+					],
+					"sid": 165904514066810
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-on-screen",
+							"objectClass": "player_beam",
+							"sid": 871246247935619,
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "player_beam",
+							"sid": 133889230530409
+						}
+					],
+					"sid": 956684191267209
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "player_beam",
+							"sid": 144211896815044,
+							"parameters": {
+								"object": "level_room"
+							}
+						},
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "player_beam",
+							"sid": 134780664589106,
+							"parameters": {
+								"object": "level_fire"
+							}
+						},
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "player_beam",
+							"sid": 718426422515854,
+							"parameters": {
+								"object": "level_secretdoor"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "spawn-another-object",
+							"objectClass": "player_beam",
+							"sid": 943588829569439,
+							"parameters": {
+								"object": "particle_star",
+								"layer": "3",
+								"image-point": "0",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "destroy",
+							"objectClass": "player_beam",
+							"sid": 968156615227735
+						},
+						{
+							"id": "play",
+							"objectClass": "audio",
+							"sid": 462288203107139,
+							"parameters": {
+								"audio-file": "bullet_hit",
+								"loop": "not-looping",
+								"volume": "0",
+								"stereo-pan": "0",
+								"tag-optional": "\"\""
+							}
+						}
+					],
+					"sid": 587213140474321,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "player_beam",
+							"sid": 230720543201593,
+							"parameters": {
+								"object": "enemy_turret"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "spawn-another-object",
+							"objectClass": "enemy_turret",
+							"sid": 693225404446892,
+							"parameters": {
+								"object": "particle_smoke",
+								"layer": "3",
+								"image-point": "0",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "spawn-another-object",
+							"objectClass": "enemy_turret",
+							"sid": 615405559912661,
+							"parameters": {
+								"object": "enemy_turret_ash",
+								"layer": "0",
+								"image-point": "0",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "destroy",
+							"objectClass": "enemy_turret",
+							"sid": 239585611698065
+						},
+						{
+							"id": "destroy",
+							"objectClass": "player_beam",
+							"sid": 834476228102362
+						},
+						{
+							"id": "play",
+							"objectClass": "audio",
+							"sid": 431948315887902,
+							"parameters": {
+								"audio-file": "door_break_old",
+								"loop": "not-looping",
+								"volume": "-7.5",
+								"stereo-pan": "0",
+								"tag-optional": "\"\""
+							}
+						}
+					],
+					"sid": 618747212039503
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "player_beam",
+							"sid": 429669917378274,
+							"parameters": {
+								"object": "enemy_tripleturret"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "spawn-another-object",
+							"objectClass": "enemy_tripleturret",
+							"sid": 751153770555458,
+							"parameters": {
+								"object": "particle_smoke",
+								"layer": "3",
+								"image-point": "0",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "spawn-another-object",
+							"objectClass": "enemy_tripleturret",
+							"sid": 569630070872460,
+							"parameters": {
+								"object": "enemy_turret_ash",
+								"layer": "0",
+								"image-point": "0",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "destroy",
+							"objectClass": "enemy_tripleturret",
+							"sid": 634503698113470
+						},
+						{
+							"id": "destroy",
+							"objectClass": "player_beam",
+							"sid": 594309059790511
+						},
+						{
+							"id": "play",
+							"objectClass": "audio",
+							"sid": 243220819793109,
+							"parameters": {
+								"audio-file": "door_break_old",
+								"loop": "not-looping",
+								"volume": "-7.5",
+								"stereo-pan": "0",
+								"tag-optional": "\"\""
+							}
+						}
+					],
+					"sid": 403424697937894
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "player_beam",
+							"sid": 144455572226222,
+							"parameters": {
+								"object": "enemy_movingturret"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "spawn-another-object",
+							"objectClass": "enemy_movingturret",
+							"sid": 510935006406943,
+							"parameters": {
+								"object": "particle_smoke",
+								"layer": "3",
+								"image-point": "0",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "spawn-another-object",
+							"objectClass": "enemy_movingturret",
+							"sid": 450489536658530,
+							"parameters": {
+								"object": "enemy_turret_ash",
+								"layer": "0",
+								"image-point": "0",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "destroy",
+							"objectClass": "enemy_movingturret",
+							"sid": 737337121304582
+						},
+						{
+							"id": "destroy",
+							"objectClass": "player_beam",
+							"sid": 581677921061249
+						},
+						{
+							"id": "play",
+							"objectClass": "audio",
+							"sid": 561928872526128,
+							"parameters": {
+								"audio-file": "door_break_old",
+								"loop": "not-looping",
+								"volume": "-7.5",
+								"stereo-pan": "0",
+								"tag-optional": "\"\""
+							}
+						}
+					],
+					"sid": 428981256851711
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "player_collision",
+							"sid": 586752324998961,
+							"parameters": {
+								"object": "level_chattymode"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 464573022699176,
+							"parameters": {
+								"variable": "chattymode",
+								"value": "true"
+							}
+						},
+						{
+							"id": "fade-volume",
+							"objectClass": "audio",
+							"sid": 743070852121012,
+							"parameters": {
+								"tag": "\"music\"",
+								"db": "-100",
+								"duration": "4.0",
+								"ending": "stop"
+							}
+						},
+						{
+							"id": "stop",
+							"objectClass": "player_collision",
+							"sid": 174912758541406,
+							"behaviorType": "8Direction"
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "player_collision",
+							"sid": 188568060478433,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"state": "disabled"
+							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "player_image",
+							"sid": 968051594087087,
+							"parameters": {
+								"animation": "\"idle\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 898386936432354,
+							"parameters": {
+								"seconds": "5.0"
+							}
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "text_enddialog",
+							"sid": 355144084414174,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"fade in\"",
+								"property": "offsetOpacity",
+								"end-value": "100",
+								"time": "0.25",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 579513517897309
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 212836476776784,
+							"parameters": {
+								"seconds": "6.0"
+							}
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "level_fade",
+							"sid": 468745290248426,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"fade in\"",
+								"property": "offsetOpacity",
+								"end-value": "100",
+								"time": "1.0",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 625398405140824
+						},
+						{
+							"id": "go-to-layout",
+							"objectClass": "System",
+							"sid": 852633559580368,
+							"parameters": {
+								"layout": "Ending"
+							}
+						}
+					],
+					"sid": 976285325293725
+				}
+			],
+			"sid": 967447450876186
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "particles",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-spraying",
+							"objectClass": "PARTICLES",
+							"sid": 492426462289400,
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "PARTICLES",
+							"sid": 125448039169876
+						}
+					],
+					"sid": 278953576219821
+				}
+			],
+			"sid": 849016079834723
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "creatures",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "player_collision",
+							"sid": 352092140310966,
+							"parameters": {
+								"object": "creature_checkpoint"
+							}
+						},
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "creature_checkpoint",
+							"sid": 613996992321503,
+							"parameters": {
+								"object": "level_checkpoint"
+							}
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "creature_checkpoint",
+							"sid": 793876257232648,
+							"parameters": {
+								"instance-variable": "collected"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 896389583761752,
+							"parameters": {
+								"variable": "checkpointx",
+								"value": "level_checkpoint.X"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 603992958913801,
+							"parameters": {
+								"variable": "checkpointy",
+								"value": "level_checkpoint.Y"
+							}
+						}
+					],
+					"sid": 326405239501203
+				},
+				{
+					"eventType": "variable",
+					"name": "message",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": true,
+					"isConstant": false,
+					"sid": 102838550491665
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "player_collision",
+							"sid": 561843720293555,
+							"parameters": {
+								"object": "CREATURES"
+							}
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "CREATURES",
+							"sid": 725495245269867,
+							"parameters": {
+								"instance-variable": "collected"
+							}
+						},
+						{
+							"id": "pick-by-comparison",
+							"objectClass": "System",
+							"sid": 323251040615368,
+							"parameters": {
+								"object": "creature_speechbubble",
+								"expression": "creature_speechbubble.belongsto",
+								"comparison": 0,
+								"value": "CREATURES.UID"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 590532646869387,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-opacity",
+									"objectClass": "creature_speechbubble",
+									"sid": 861921614199352,
+									"parameters": {
+										"comparison": 0,
+										"opacity": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "play-by-name",
+									"objectClass": "audio",
+									"sid": 967128918837062,
+									"parameters": {
+										"folder": "sounds",
+										"audio-file-name": "choose(\"creature_talkl\", \"creature_talkm\", \"creature_talkh\")",
+										"loop": "not-looping",
+										"volume": "0",
+										"stereo-pan": "0",
+										"tag-optional": "\"\""
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 343556119620271,
+									"parameters": {
+										"variable": "message",
+										"value": "floor(random(0, 10001))"
+									}
+								},
+								{
+									"callFunction": "Set message",
+									"sid": 957795975501063,
+									"parameters": [
+										"message"
+									]
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "creature_speechbubble",
+									"sid": 721407981859910,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"fade in\"",
+										"property": "offsetOpacity",
+										"end-value": "100",
+										"time": "0.125",
+										"ease": "default",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 253515363264046
+								},
+								{
+									"id": "start-timer",
+									"objectClass": "creature_speechbubble",
+									"sid": 567572123665618,
+									"behaviorType": "Timer",
+									"parameters": {
+										"duration": "3.0",
+										"type": "once",
+										"tag": "\"wait\""
+									}
+								}
+							],
+							"sid": 433450717526385
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-x-seconds",
+							"objectClass": "System",
+							"sid": 583650073371602,
+							"parameters": {
+								"interval-seconds": "random(5 - collected / 25, 20 - collected / 25)"
+							}
+						},
+						{
+							"id": "pick-by-evaluate",
+							"objectClass": "System",
+							"sid": 936350066248928,
+							"parameters": {
+								"object": "CREATURES",
+								"expression": "CREATURES.collected"
+							}
+						},
+						{
+							"id": "pick-random-instance",
+							"objectClass": "System",
+							"sid": 648233772038787,
+							"parameters": {
+								"object": "CREATURES"
+							}
+						},
+						{
+							"id": "pick-by-comparison",
+							"objectClass": "System",
+							"sid": 891118203520230,
+							"parameters": {
+								"object": "creature_speechbubble",
+								"expression": "creature_speechbubble.belongsto",
+								"comparison": 0,
+								"value": "CREATURES.UID"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 529552776266297,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-opacity",
+									"objectClass": "creature_speechbubble",
+									"sid": 257699848594350,
+									"parameters": {
+										"comparison": 0,
+										"opacity": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "play-by-name",
+									"objectClass": "audio",
+									"sid": 554343459784697,
+									"parameters": {
+										"folder": "sounds",
+										"audio-file-name": "choose(\"creature_talkl\", \"creature_talkm\", \"creature_talkh\")",
+										"loop": "not-looping",
+										"volume": "0",
+										"stereo-pan": "0",
+										"tag-optional": "\"\""
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 124252070473500,
+									"parameters": {
+										"variable": "message",
+										"value": "choose(10001, 10002, 10003)"
+									}
+								},
+								{
+									"callFunction": "Set message",
+									"sid": 705202577051250,
+									"parameters": [
+										"message"
+									]
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "creature_speechbubble",
+									"sid": 586171617680030,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"fade in\"",
+										"property": "offsetOpacity",
+										"end-value": "100",
+										"time": "0.125",
+										"ease": "default",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 279225419693388
+								},
+								{
+									"id": "start-timer",
+									"objectClass": "creature_speechbubble",
+									"sid": 720292082851249,
+									"behaviorType": "Timer",
+									"parameters": {
+										"duration": "3.0",
+										"type": "once",
+										"tag": "\"wait\""
+									}
+								}
+							],
+							"sid": 601101046369712
+						}
+					]
+				},
+				{
+					"functionName": "Set message",
+					"functionDescription": "Sets the message of a speech bubble.",
+					"functionCategory": "Speech",
+					"functionReturnType": "none",
+					"functionCopyPicked": true,
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "Number",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "Randomly rolled number.",
+							"sid": 123350210500389
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 318772252944024,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 776391452532743,
+									"parameters": {
+										"first-value": "Number",
+										"comparison": 0,
+										"second-value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "creature_speechbubble",
+									"sid": 389074227599378,
+									"parameters": {
+										"animation": "\"message3\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "move-to-top",
+									"objectClass": "creature_speechbubble",
+									"sid": 311992274610335
+								}
+							],
+							"sid": 177687501046222
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-between-values",
+									"objectClass": "System",
+									"sid": 759846289356435,
+									"parameters": {
+										"value": "Number",
+										"lower-bound": "1",
+										"upper-bound": "5000"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "creature_speechbubble",
+									"sid": 613622354964381,
+									"parameters": {
+										"animation": "\"message1\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "move-to-top",
+									"objectClass": "creature_speechbubble",
+									"sid": 725035635683819
+								}
+							],
+							"sid": 850298834700838
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-between-values",
+									"objectClass": "System",
+									"sid": 772608472363757,
+									"parameters": {
+										"value": "Number",
+										"lower-bound": "5001",
+										"upper-bound": "10000"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "creature_speechbubble",
+									"sid": 134285226669905,
+									"parameters": {
+										"animation": "\"message2\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "move-to-top",
+									"objectClass": "creature_speechbubble",
+									"sid": 859707476968268
+								}
+							],
+							"sid": 144086500857986
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 689263624771055,
+									"parameters": {
+										"first-value": "Number",
+										"comparison": 0,
+										"second-value": "10001"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "creature_speechbubble",
+									"sid": 671196894481984,
+									"parameters": {
+										"animation": "\"random1\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "move-to-top",
+									"objectClass": "creature_speechbubble",
+									"sid": 867066719051147
+								}
+							],
+							"sid": 386260290266216
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 478265434199589,
+									"parameters": {
+										"first-value": "Number",
+										"comparison": 0,
+										"second-value": "10002"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "creature_speechbubble",
+									"sid": 175416217174387,
+									"parameters": {
+										"animation": "\"random2\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "move-to-top",
+									"objectClass": "creature_speechbubble",
+									"sid": 685553729423238
+								}
+							],
+							"sid": 589362876330256
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 800897248002988,
+									"parameters": {
+										"first-value": "Number",
+										"comparison": 0,
+										"second-value": "10003"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "creature_speechbubble",
+									"sid": 959664859233192,
+									"parameters": {
+										"animation": "\"random3\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "move-to-top",
+									"objectClass": "creature_speechbubble",
+									"sid": 438475081247901
+								}
+							],
+							"sid": 610501034376449
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "enemy_turret_bullet",
+							"sid": 888602230437431,
+							"parameters": {
+								"object": "CREATURES"
+							}
+						},
+						{
+							"id": "pick-by-comparison",
+							"objectClass": "System",
+							"sid": 715106718782586,
+							"parameters": {
+								"object": "creature_speechbubble",
+								"expression": "creature_speechbubble.belongsto",
+								"comparison": 0,
+								"value": "CREATURES.UID"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "bounce-off-object",
+							"objectClass": "enemy_turret_bullet",
+							"sid": 365483351465615,
+							"disabled": true,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"object": "CREATURES"
+							}
+						}
+					],
+					"sid": 885418421020419,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-opacity",
+									"objectClass": "creature_speechbubble",
+									"sid": 712373895262469,
+									"disabled": true,
+									"parameters": {
+										"comparison": 0,
+										"opacity": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "play-by-name",
+									"objectClass": "audio",
+									"sid": 804068696676048,
+									"parameters": {
+										"folder": "sounds",
+										"audio-file-name": "choose(\"creature_talkl\", \"creature_talkm\", \"creature_talkh\")",
+										"loop": "not-looping",
+										"volume": "0",
+										"stereo-pan": "0",
+										"tag-optional": "\"\""
+									}
+								},
+								{
+									"id": "set-opacity",
+									"objectClass": "creature_speechbubble",
+									"sid": 422741023427880,
+									"parameters": {
+										"opacity": "0"
+									}
+								},
+								{
+									"id": "stop-all-tweens",
+									"objectClass": "creature_speechbubble",
+									"sid": 355968891685689,
+									"behaviorType": "Tween"
+								},
+								{
+									"id": "stop-all-timers",
+									"objectClass": "creature_speechbubble",
+									"sid": 756604806123822,
+									"behaviorType": "Timer"
+								},
+								{
+									"id": "set-animation",
+									"objectClass": "creature_speechbubble",
+									"sid": 611611512762658,
+									"parameters": {
+										"animation": "choose(\"hurt1\", \"hurt2\")",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "creature_speechbubble",
+									"sid": 275280723700506,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"fade in\"",
+										"property": "offsetOpacity",
+										"end-value": "100",
+										"time": "0.125",
+										"ease": "default",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 601704429341212
+								},
+								{
+									"id": "start-timer",
+									"objectClass": "creature_speechbubble",
+									"sid": 850510875780722,
+									"behaviorType": "Timer",
+									"parameters": {
+										"duration": "3.0",
+										"type": "once",
+										"tag": "\"wait\""
+									}
+								}
+							],
+							"sid": 421490052835901
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-enabled",
+									"objectClass": "CREATURES",
+									"sid": 665918936577191,
+									"behaviorType": "Rotate",
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-enabled",
+									"objectClass": "CREATURES",
+									"sid": 191629747092059,
+									"behaviorType": "Rotate",
+									"parameters": {
+										"state": "enabled"
+									}
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 197586097842780,
+									"parameters": {
+										"seconds": "0.5"
+									}
+								},
+								{
+									"id": "set-enabled",
+									"objectClass": "CREATURES",
+									"sid": 460266522312967,
+									"behaviorType": "Rotate",
+									"parameters": {
+										"state": "disabled"
+									}
+								},
+								{
+									"id": "set-angle",
+									"objectClass": "CREATURES",
+									"sid": 298875248003824,
+									"parameters": {
+										"angle": "0"
+									}
+								}
+							],
+							"sid": 481097033531220
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-timer",
+							"objectClass": "creature_speechbubble",
+							"sid": 503819080174812,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "\"wait\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "tween-one-property",
+							"objectClass": "creature_speechbubble",
+							"sid": 808038005727809,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"fade out\"",
+								"property": "offsetOpacity",
+								"end-value": "0",
+								"time": "0.125",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 383121233318781
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "CREATURES",
+							"sid": 782043616557586,
+							"parameters": {
+								"instance-variable": "collected"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 480824137031984,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "CREATURES",
+									"sid": 814164086744825,
+									"parameters": {
+										"instance-variable": "index",
+										"comparison": 0,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "follow-object",
+									"objectClass": "CREATURES",
+									"sid": 670417675037754,
+									"behaviorType": "Follow",
+									"parameters": {
+										"object": "player_collision",
+										"from-current-position": true
+									}
+								},
+								{
+									"id": "set-delay",
+									"objectClass": "CREATURES",
+									"sid": 848849699869405,
+									"behaviorType": "Follow",
+									"parameters": {
+										"delay": "140"
+									}
+								},
+								{
+									"id": "set-max-delay",
+									"objectClass": "CREATURES",
+									"sid": 773454004001350,
+									"behaviorType": "Follow",
+									"parameters": {
+										"max-delay": "190"
+									}
+								}
+							],
+							"sid": 559469443140634
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "CREATURES",
+									"sid": 312622653279753,
+									"parameters": {
+										"instance-variable": "index",
+										"comparison": 1,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "follow-object",
+									"objectClass": "CREATURES",
+									"sid": 954016032012753,
+									"behaviorType": "Follow",
+									"parameters": {
+										"object": "player_collision",
+										"from-current-position": true
+									}
+								},
+								{
+									"id": "set-delay",
+									"objectClass": "CREATURES",
+									"sid": 895829440699494,
+									"behaviorType": "Follow",
+									"parameters": {
+										"delay": "(70 * Self.index) + 140"
+									}
+								},
+								{
+									"id": "set-max-delay",
+									"objectClass": "CREATURES",
+									"sid": 207049324614292,
+									"behaviorType": "Follow",
+									"parameters": {
+										"max-delay": "Self.Follow.Delay + 50"
+									}
+								}
+							],
+							"sid": 478849351588857
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "player_collision",
+							"sid": 123844297426533,
+							"parameters": {
+								"object": "CREATURES"
+							}
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "CREATURES",
+							"sid": 839330646628767,
+							"parameters": {
+								"instance-variable": "collected"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "move-to-layer",
+							"objectClass": "CREATURES",
+							"sid": 626676318485582,
+							"parameters": {
+								"layer": "2"
+							}
+						},
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "CREATURES",
+							"sid": 571469095565175,
+							"parameters": {
+								"instance-variable": "collected",
+								"value": "true"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "CREATURES",
+							"sid": 836867787598921,
+							"parameters": {
+								"instance-variable": "index",
+								"value": "collected"
+							}
+						},
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 932739668855534,
+							"parameters": {
+								"variable": "collected",
+								"value": "1"
+							}
+						},
+						{
+							"id": "play",
+							"objectClass": "audio",
+							"sid": 259369666757610,
+							"parameters": {
+								"audio-file": "creature_collect",
+								"loop": "not-looping",
+								"volume": "-2.5",
+								"stereo-pan": "0",
+								"tag-optional": "\"collect\""
+							}
+						}
+					],
+					"sid": 933865150254643,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "level_secretdoor",
+									"sid": 960734976272486,
+									"parameters": {
+										"instance-variable": "creatureuid",
+										"comparison": 0,
+										"value": "CREATURES.UID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "start-fade",
+									"objectClass": "level_secretdoor",
+									"sid": 132282121248942,
+									"behaviorType": "Fade"
+								},
+								{
+									"id": "play",
+									"objectClass": "audio",
+									"sid": 641262447529245,
+									"parameters": {
+										"audio-file": "door_break_old",
+										"loop": "not-looping",
+										"volume": "-7.5",
+										"stereo-pan": "0",
+										"tag-optional": "\"\""
+									}
+								}
+							],
+							"sid": 406207046422529,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-on-screen",
+											"objectClass": "level_secretdoor",
+											"sid": 349733635535822
+										}
+									],
+									"actions": [
+										{
+											"id": "play",
+											"objectClass": "audio",
+											"sid": 408813837987133,
+											"parameters": {
+												"audio-file": "door_break_old",
+												"loop": "not-looping",
+												"volume": "0",
+												"stereo-pan": "0",
+												"tag-optional": "\"\""
+											}
+										}
+									],
+									"sid": 463951072093304,
+									"disabled": true
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "stop-all-tweens",
+									"objectClass": "text_collect",
+									"sid": 181896457714830,
+									"behaviorType": "Tween"
+								},
+								{
+									"id": "set-opacity",
+									"objectClass": "text_collect",
+									"sid": 782154316026579,
+									"parameters": {
+										"opacity": "0"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "text_collect",
+									"sid": 560688946434973,
+									"parameters": {
+										"text": "CREATURES.message"
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "text_collect",
+									"sid": 972994651383317,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"fade in\"",
+										"property": "offsetOpacity",
+										"end-value": "100",
+										"time": "0.25",
+										"ease": "default",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 473019373425913
+								},
+								{
+									"id": "start-timer",
+									"objectClass": "text_collect",
+									"sid": 888029405678600,
+									"behaviorType": "Timer",
+									"parameters": {
+										"duration": "len(CREATURES.message) / 5",
+										"type": "once",
+										"tag": "\"timer\""
+									}
+								}
+							],
+							"sid": 724086783265890
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-timer",
+							"objectClass": "text_collect",
+							"sid": 503874761241701,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "\"timer\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "tween-one-property",
+							"objectClass": "text_collect",
+							"sid": 399242347915799,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"fade out\"",
+								"property": "offsetOpacity",
+								"end-value": "0",
+								"time": "0.25",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 933770643145846
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 610526846347851,
+							"parameters": {
+								"object": "CREATURES"
+							}
+						},
+						{
+							"id": "compare-x",
+							"objectClass": "CREATURES",
+							"sid": 262423152410805,
+							"parameters": {
+								"comparison": 4,
+								"x-co-ordinate": "player_collision.X"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-mirrored",
+							"objectClass": "CREATURES",
+							"sid": 733281390055176,
+							"parameters": {
+								"state": "mirrored"
+							}
+						}
+					],
+					"sid": 386945232156888
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 161928631007216,
+							"parameters": {
+								"object": "CREATURES"
+							}
+						},
+						{
+							"id": "compare-x",
+							"objectClass": "CREATURES",
+							"sid": 316989375671389,
+							"parameters": {
+								"comparison": 2,
+								"x-co-ordinate": "player_collision.X"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-mirrored",
+							"objectClass": "CREATURES",
+							"sid": 298754663951977,
+							"parameters": {
+								"state": "not-mirrored"
+							}
+						}
+					],
+					"sid": 706567255133110
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "creature_bushhidden",
+							"sid": 759062141911351,
+							"parameters": {
+								"object": "level_bush"
+							}
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "creature_bushhidden",
+							"sid": 118136883529912,
+							"parameters": {
+								"instance-variable": "collected"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "pick-by-unique-id",
+							"objectClass": "level_bush",
+							"sid": 604160250929624,
+							"disabled": true,
+							"parameters": {
+								"unique-id": "27"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 927239984257591,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "every-x-seconds",
+									"objectClass": "System",
+									"sid": 181638089015369,
+									"parameters": {
+										"interval-seconds": "1.0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-active",
+									"objectClass": "level_bush",
+									"sid": 870812448736584,
+									"behaviorType": "Sine",
+									"parameters": {
+										"state": "active"
+									}
+								}
+							],
+							"sid": 822455370264827,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-on-screen",
+											"objectClass": "creature_bushhidden",
+											"sid": 822837462348040
+										}
+									],
+									"actions": [
+										{
+											"id": "play",
+											"objectClass": "audio",
+											"sid": 472558749379071,
+											"parameters": {
+												"audio-file": "rustle",
+												"loop": "not-looping",
+												"volume": "-10",
+												"stereo-pan": "0",
+												"tag-optional": "\"\""
+											}
+										}
+									],
+									"sid": 303690166314658
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "wait",
+											"objectClass": "System",
+											"sid": 702464218067819,
+											"parameters": {
+												"seconds": "0.2"
+											}
+										}
+									],
+									"sid": 187267795051962,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "is-on-screen",
+													"objectClass": "creature_bushhidden",
+													"sid": 352261199966839
+												}
+											],
+											"actions": [
+												{
+													"id": "play",
+													"objectClass": "audio",
+													"sid": 235122928375792,
+													"parameters": {
+														"audio-file": "rustle",
+														"loop": "not-looping",
+														"volume": "-10",
+														"stereo-pan": "0",
+														"tag-optional": "\"\""
+													}
+												}
+											],
+											"sid": 746497692331033
+										},
+										{
+											"eventType": "block",
+											"conditions": [],
+											"actions": [
+												{
+													"id": "wait",
+													"objectClass": "System",
+													"sid": 764636572265544,
+													"parameters": {
+														"seconds": "0.4"
+													}
+												},
+												{
+													"id": "set-cycle-position",
+													"objectClass": "level_bush",
+													"sid": 174329739417139,
+													"behaviorType": "Sine",
+													"parameters": {
+														"cycle-position": "0"
+													}
+												},
+												{
+													"id": "set-active",
+													"objectClass": "level_bush",
+													"sid": 636397290050655,
+													"behaviorType": "Sine",
+													"parameters": {
+														"state": "inactive"
+													}
+												},
+												{
+													"id": "wait",
+													"objectClass": "System",
+													"sid": 688701025767319,
+													"parameters": {
+														"seconds": "0.4"
+													}
+												}
+											],
+											"sid": 768337614835373
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 994241120803209,
+							"parameters": {
+								"variable": "chattymode"
+							}
+						},
+						{
+							"id": "every-x-seconds",
+							"objectClass": "System",
+							"sid": 558980107918417,
+							"parameters": {
+								"interval-seconds": "random(1/30, 1/20)"
+							}
+						},
+						{
+							"id": "pick-random-instance",
+							"objectClass": "System",
+							"sid": 938429733029377,
+							"parameters": {
+								"object": "CREATURES"
+							}
+						},
+						{
+							"id": "pick-by-comparison",
+							"objectClass": "System",
+							"sid": 326881404141194,
+							"parameters": {
+								"object": "creature_speechbubble",
+								"expression": "creature_speechbubble.belongsto",
+								"comparison": 0,
+								"value": "CREATURES.UID"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-opacity",
+							"objectClass": "creature_speechbubble",
+							"sid": 496505981621897,
+							"parameters": {
+								"opacity": "0"
+							}
+						},
+						{
+							"id": "stop-all-tweens",
+							"objectClass": "creature_speechbubble",
+							"sid": 512571686557890,
+							"behaviorType": "Tween"
+						},
+						{
+							"id": "stop-all-timers",
+							"objectClass": "creature_speechbubble",
+							"sid": 972543031749177,
+							"behaviorType": "Timer"
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "creature_speechbubble",
+							"sid": 103753373832000,
+							"parameters": {
+								"animation": "\"celebrate\"",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 262567392532946,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-on-screen",
+									"objectClass": "CREATURES",
+									"sid": 952143691430002
+								}
+							],
+							"actions": [
+								{
+									"id": "play-by-name",
+									"objectClass": "audio",
+									"sid": 357302590420067,
+									"parameters": {
+										"folder": "sounds",
+										"audio-file-name": "choose(\"creature_talkl\", \"creature_talkm\", \"creature_talkh\")",
+										"loop": "not-looping",
+										"volume": "-5",
+										"stereo-pan": "0",
+										"tag-optional": "\"\""
+									}
+								}
+							],
+							"sid": 921961126895964
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "tween-one-property",
+									"objectClass": "creature_speechbubble",
+									"sid": 773055255849394,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"fade in\"",
+										"property": "offsetOpacity",
+										"end-value": "100",
+										"time": "0.125",
+										"ease": "default",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 475934180746517
+								},
+								{
+									"id": "start-timer",
+									"objectClass": "creature_speechbubble",
+									"sid": 734445736262513,
+									"behaviorType": "Timer",
+									"parameters": {
+										"duration": "3.0",
+										"type": "once",
+										"tag": "\"wait\""
+									}
+								}
+							],
+							"sid": 252070523488896
+						}
+					]
+				}
+			],
+			"sid": 101834967964365
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "enemies",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-on-screen",
+							"objectClass": "enemy_turret",
+							"sid": 174295128897032,
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "enemy_turret",
+							"sid": 993422546803836,
+							"parameters": {
+								"animation": "\"idle\"",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 395885451559377
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 522539279253900
+						},
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 759821860717219,
+							"parameters": {
+								"object": "enemy_turret"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 616971554698878,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-random-instance",
+									"objectClass": "System",
+									"sid": 254474568061478,
+									"parameters": {
+										"object": "TARGETS"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "enemy_turret",
+									"sid": 655676648520353,
+									"parameters": {
+										"instance-variable": "target",
+										"value": "TARGETS.UID"
+									}
+								}
+							],
+							"sid": 971127548823447
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 189525013464136,
+							"parameters": {
+								"object": "enemy_turret"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 330362901463296,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "TARGETS",
+									"sid": 317629917916161,
+									"parameters": {
+										"unique-id": "enemy_turret.target"
+									}
+								},
+								{
+									"id": "has-los-to-object",
+									"objectClass": "enemy_turret",
+									"sid": 801848592583864,
+									"behaviorType": "LineOfSight",
+									"parameters": {
+										"object": "TARGETS",
+										"image-point": "0"
+									}
+								},
+								{
+									"id": "is-on-screen",
+									"objectClass": "enemy_turret",
+									"sid": 257515515803104
+								}
+							],
+							"actions": [
+								{
+									"id": "rotate-toward-position",
+									"objectClass": "enemy_turret",
+									"sid": 551001393363115,
+									"parameters": {
+										"degrees": "180 * dt",
+										"x": "TARGETS.X",
+										"y": "TARGETS.Y"
+									}
+								}
+							],
+							"sid": 509711390624070,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "enemy_turret_target",
+											"sid": 455407163223985,
+											"parameters": {
+												"unique-id": "enemy_turret.aimer"
+											}
+										},
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "TARGETS",
+											"sid": 108712153861462,
+											"parameters": {
+												"unique-id": "enemy_turret.target"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "enemy_turret_target",
+											"sid": 761613698923433,
+											"parameters": {
+												"x": "lerp(Self.X, TARGETS.X, 30 * dt)",
+												"y": "lerp(Self.Y, TARGETS.Y, 30 * dt)"
+											}
+										},
+										{
+											"id": "set-visible",
+											"objectClass": "enemy_turret_target",
+											"sid": 992618719157879,
+											"parameters": {
+												"visibility": "visible"
+											}
+										}
+									],
+									"sid": 619683192261488
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "enemy_turret",
+											"sid": 203748978776418,
+											"parameters": {
+												"animation": "\"idle\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation",
+											"objectClass": "enemy_turret",
+											"sid": 343300215730763,
+											"parameters": {
+												"animation": "\"flash\"",
+												"from": "beginning"
+											}
+										}
+									],
+									"sid": 710771018730994
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "enemy_turret",
+											"sid": 906675228089110,
+											"parameters": {
+												"instance-variable": "targeting",
+												"comparison": 0,
+												"value": "\"player\""
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "enemy_turret",
+											"sid": 789649370856813,
+											"parameters": {
+												"instance-variable": "targeting",
+												"comparison": 0,
+												"value": "\"none\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-instvar-value",
+											"objectClass": "enemy_turret",
+											"sid": 920319631333458,
+											"parameters": {
+												"instance-variable": "targeting",
+												"value": "\"creature\""
+											}
+										},
+										{
+											"id": "stop",
+											"objectClass": "audio",
+											"sid": 354304286665994,
+											"parameters": {
+												"tag": "\"find\""
+											}
+										},
+										{
+											"id": "play",
+											"objectClass": "audio",
+											"sid": 533228037250325,
+											"parameters": {
+												"audio-file": "target_find",
+												"loop": "not-looping",
+												"volume": "0",
+												"stereo-pan": "0",
+												"tag-optional": "\"find\""
+											}
+										}
+									],
+									"sid": 767253849792524,
+									"isOrBlock": true
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "TARGETS",
+									"sid": 435427471586077,
+									"parameters": {
+										"unique-id": "enemy_turret.target"
+									}
+								},
+								{
+									"id": "has-los-to-object",
+									"objectClass": "enemy_turret",
+									"sid": 252732376523738,
+									"behaviorType": "LineOfSight",
+									"parameters": {
+										"object": "TARGETS",
+										"image-point": "0"
+									},
+									"isInverted": true
+								},
+								{
+									"id": "has-los-to-object",
+									"objectClass": "enemy_turret",
+									"sid": 911367677927149,
+									"behaviorType": "LineOfSight",
+									"parameters": {
+										"object": "player_collision",
+										"image-point": "0"
+									}
+								},
+								{
+									"id": "is-on-screen",
+									"objectClass": "enemy_turret",
+									"sid": 173200430785819
+								}
+							],
+							"actions": [
+								{
+									"id": "rotate-toward-position",
+									"objectClass": "enemy_turret",
+									"sid": 880417971295109,
+									"parameters": {
+										"degrees": "180 * dt",
+										"x": "player_collision.X",
+										"y": "player_collision.Y"
+									}
+								}
+							],
+							"sid": 612771663835555,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "enemy_turret_target",
+											"sid": 901019895001103,
+											"parameters": {
+												"unique-id": "enemy_turret.aimer"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "enemy_turret_target",
+											"sid": 264256150168694,
+											"parameters": {
+												"x": "lerp(Self.X, player_collision.X, 30 * dt)",
+												"y": "lerp(Self.Y, player_collision.Y, 30 * dt)"
+											}
+										},
+										{
+											"id": "set-visible",
+											"objectClass": "enemy_turret_target",
+											"sid": 979046690922097,
+											"parameters": {
+												"visibility": "visible"
+											}
+										}
+									],
+									"sid": 169892278546957
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "enemy_turret",
+											"sid": 352874312131613,
+											"parameters": {
+												"animation": "\"idle\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation",
+											"objectClass": "enemy_turret",
+											"sid": 826593979987040,
+											"parameters": {
+												"animation": "\"flash\"",
+												"from": "beginning"
+											}
+										}
+									],
+									"sid": 105658829230909
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "enemy_turret",
+											"sid": 285529005204947,
+											"parameters": {
+												"instance-variable": "targeting",
+												"comparison": 0,
+												"value": "\"creature\""
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "enemy_turret",
+											"sid": 312009952123538,
+											"parameters": {
+												"instance-variable": "targeting",
+												"comparison": 0,
+												"value": "\"none\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-instvar-value",
+											"objectClass": "enemy_turret",
+											"sid": 485934398895545,
+											"parameters": {
+												"instance-variable": "targeting",
+												"value": "\"player\""
+											}
+										},
+										{
+											"id": "stop",
+											"objectClass": "audio",
+											"sid": 666900365099517,
+											"parameters": {
+												"tag": "\"find\""
+											}
+										},
+										{
+											"id": "play",
+											"objectClass": "audio",
+											"sid": 394015232485994,
+											"parameters": {
+												"audio-file": "target_find",
+												"loop": "not-looping",
+												"volume": "0",
+												"stereo-pan": "0",
+												"tag-optional": "\"find\""
+											}
+										}
+									],
+									"sid": 756355034821690,
+									"isOrBlock": true
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "TARGETS",
+									"sid": 442787042784607,
+									"parameters": {
+										"unique-id": "enemy_turret.target"
+									}
+								},
+								{
+									"id": "has-los-to-object",
+									"objectClass": "enemy_turret",
+									"sid": 233047197536092,
+									"behaviorType": "LineOfSight",
+									"parameters": {
+										"object": "TARGETS",
+										"image-point": "0"
+									},
+									"isInverted": true
+								},
+								{
+									"id": "has-los-to-object",
+									"objectClass": "enemy_turret",
+									"sid": 268815782221102,
+									"behaviorType": "LineOfSight",
+									"parameters": {
+										"object": "player_collision",
+										"image-point": "0"
+									},
+									"isInverted": true
+								},
+								{
+									"id": "has-los-to-object",
+									"objectClass": "enemy_turret",
+									"sid": 186775985647035,
+									"disabled": true,
+									"behaviorType": "LineOfSight",
+									"parameters": {
+										"object": "player_collision",
+										"image-point": "0"
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [],
+							"sid": 447988780058486,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "enemy_turret_target",
+											"sid": 530801414000686,
+											"parameters": {
+												"unique-id": "enemy_turret.aimer"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-visible",
+											"objectClass": "enemy_turret_target",
+											"sid": 620163764492118,
+											"parameters": {
+												"visibility": "invisible"
+											}
+										}
+									],
+									"sid": 815825404161015
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "trigger-once-while-true",
+											"objectClass": "System",
+											"sid": 427914268869090
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation",
+											"objectClass": "enemy_turret",
+											"sid": 196276767774218,
+											"parameters": {
+												"animation": "\"idle\"",
+												"from": "beginning"
+											}
+										},
+										{
+											"id": "play",
+											"objectClass": "audio",
+											"sid": 881291763566753,
+											"parameters": {
+												"audio-file": "turret_losetarget",
+												"loop": "not-looping",
+												"volume": "-2.5",
+												"stereo-pan": "0",
+												"tag-optional": "\"turret\""
+											}
+										}
+									],
+									"sid": 347420213489157,
+									"disabled": true
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "enemy_turret",
+											"sid": 831733956687537,
+											"parameters": {
+												"instance-variable": "targeting",
+												"comparison": 0,
+												"value": "\"creature\""
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "enemy_turret",
+											"sid": 806272625437409,
+											"parameters": {
+												"instance-variable": "targeting",
+												"comparison": 0,
+												"value": "\"player\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-instvar-value",
+											"objectClass": "enemy_turret",
+											"sid": 999308362585448,
+											"parameters": {
+												"instance-variable": "targeting",
+												"value": "\"none\""
+											}
+										},
+										{
+											"id": "stop",
+											"objectClass": "audio",
+											"sid": 533377213599281,
+											"parameters": {
+												"tag": "\"lose\""
+											}
+										},
+										{
+											"id": "play",
+											"objectClass": "audio",
+											"sid": 343821017801571,
+											"parameters": {
+												"audio-file": "target_lose",
+												"loop": "not-looping",
+												"volume": "0",
+												"stereo-pan": "0",
+												"tag-optional": "\"lose\""
+											}
+										}
+									],
+									"sid": 699796053632426,
+									"isOrBlock": true
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-on-screen",
+									"objectClass": "enemy_turret",
+									"sid": 654399865412866,
+									"isInverted": true
+								}
+							],
+							"actions": [],
+							"sid": 470156580792690,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "enemy_turret_target",
+											"sid": 680960487186189,
+											"parameters": {
+												"unique-id": "enemy_turret.aimer"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-visible",
+											"objectClass": "enemy_turret_target",
+											"sid": 679339108201086,
+											"parameters": {
+												"visibility": "invisible"
+											}
+										}
+									],
+									"sid": 687683563077071
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "enemy_turret",
+											"sid": 258696824120006,
+											"parameters": {
+												"instance-variable": "targeting",
+												"comparison": 0,
+												"value": "\"creature\""
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "enemy_turret",
+											"sid": 190563149405114,
+											"parameters": {
+												"instance-variable": "targeting",
+												"comparison": 0,
+												"value": "\"player\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-instvar-value",
+											"objectClass": "enemy_turret",
+											"sid": 733568159639393,
+											"parameters": {
+												"instance-variable": "targeting",
+												"value": "\"none\""
+											}
+										},
+										{
+											"id": "play",
+											"objectClass": "audio",
+											"sid": 480295127992656,
+											"disabled": true,
+											"parameters": {
+												"audio-file": "target_lose",
+												"loop": "not-looping",
+												"volume": "0",
+												"stereo-pan": "0",
+												"tag-optional": "\"turret\""
+											}
+										}
+									],
+									"sid": 551976105591850,
+									"isOrBlock": true
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "ray-intersected",
+							"objectClass": "enemy_turret",
+							"sid": 917187406477517,
+							"behaviorType": "LineOfSight"
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "enemy_turret",
+							"sid": 492725364193599,
+							"parameters": {
+								"animation": "\"idle\"",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 499854151957711
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "enemy_turret",
+							"sid": 257456798711789,
+							"parameters": {
+								"animation": "\"idle\""
+							}
+						},
+						{
+							"id": "is-on-screen",
+							"objectClass": "enemy_turret",
+							"sid": 957880744093772
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 388351548188952
+						}
+					],
+					"actions": [
+						{
+							"id": "play",
+							"objectClass": "audio",
+							"sid": 494087729501640,
+							"parameters": {
+								"audio-file": "target_lose",
+								"loop": "not-looping",
+								"volume": "0",
+								"stereo-pan": "0",
+								"tag-optional": "\"turret\""
+							}
+						}
+					],
+					"sid": 251726379125399,
+					"disabled": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-animation-finished",
+							"objectClass": "enemy_turret",
+							"sid": 165601049434833,
+							"parameters": {
+								"animation": "\"flash\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "enemy_turret",
+							"sid": 554046214818791,
+							"parameters": {
+								"animation": "\"shake\"",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 951691531717870
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-animation-finished",
+							"objectClass": "enemy_turret",
+							"sid": 876921422267286,
+							"parameters": {
+								"animation": "\"fire\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "enemy_turret",
+							"sid": 728725792640840,
+							"parameters": {
+								"animation": "\"shake\"",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 173928499870280
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "enemy_turret",
+							"sid": 781377369489357,
+							"parameters": {
+								"animation": "\"shake\""
+							}
+						},
+						{
+							"id": "compare-animation-frame",
+							"objectClass": "enemy_turret",
+							"sid": 654791205968106,
+							"parameters": {
+								"comparison": 0,
+								"number": "1"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 370699408737772,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-on-screen",
+									"objectClass": "enemy_turret",
+									"sid": 139387002638175
+								},
+								{
+									"id": "trigger-once-while-true",
+									"objectClass": "System",
+									"sid": 419905714152567
+								}
+							],
+							"actions": [
+								{
+									"id": "stop",
+									"objectClass": "audio",
+									"sid": 630478256071270,
+									"parameters": {
+										"tag": "\"charge\""
+									}
+								},
+								{
+									"id": "play",
+									"objectClass": "audio",
+									"sid": 934621586970943,
+									"parameters": {
+										"audio-file": "turret_charge",
+										"loop": "not-looping",
+										"volume": "5",
+										"stereo-pan": "0",
+										"tag-optional": "\"charge\""
+									}
+								}
+							],
+							"sid": 550843731622827
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-animation-finished",
+							"objectClass": "enemy_turret",
+							"sid": 197119395735138,
+							"parameters": {
+								"animation": "\"shake\""
+							}
+						},
+						{
+							"id": "is-on-screen",
+							"objectClass": "enemy_turret",
+							"sid": 280489732494612
+						}
+					],
+					"actions": [
+						{
+							"id": "stop",
+							"objectClass": "audio",
+							"sid": 420745361312393,
+							"parameters": {
+								"tag": "\"fire\""
+							}
+						},
+						{
+							"id": "play",
+							"objectClass": "audio",
+							"sid": 447027721563593,
+							"parameters": {
+								"audio-file": "turret_fire",
+								"loop": "not-looping",
+								"volume": "-2",
+								"stereo-pan": "0",
+								"tag-optional": "\"fire\""
+							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "enemy_turret",
+							"sid": 699917688692389,
+							"parameters": {
+								"animation": "\"fire\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "spawn-another-object",
+							"objectClass": "enemy_turret",
+							"sid": 578931588168971,
+							"parameters": {
+								"object": "particle_smoke",
+								"layer": "3",
+								"image-point": "1",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "spawn-another-object",
+							"objectClass": "enemy_turret",
+							"sid": 664115123446362,
+							"parameters": {
+								"object": "enemy_turret_bullet",
+								"layer": "3",
+								"image-point": "1",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						}
+					],
+					"sid": 191098505661744
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "enemy_turret_bullet",
+							"sid": 197068413172538,
+							"parameters": {
+								"object": "level_room"
+							}
+						},
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "enemy_turret_bullet",
+							"sid": 661902207131905,
+							"parameters": {
+								"object": "level_fire"
+							}
+						},
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "enemy_turret_bullet",
+							"sid": 780523898229896,
+							"parameters": {
+								"object": "level_secretdoor"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "spawn-another-object",
+							"objectClass": "enemy_turret_bullet",
+							"sid": 289791982356226,
+							"parameters": {
+								"object": "particle_star",
+								"layer": "3",
+								"image-point": "0",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "destroy",
+							"objectClass": "enemy_turret_bullet",
+							"sid": 560097473364889
+						}
+					],
+					"sid": 379267667793362,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-on-screen",
+									"objectClass": "enemy_turret_bullet",
+									"sid": 545094557166630
+								}
+							],
+							"actions": [
+								{
+									"id": "stop",
+									"objectClass": "audio",
+									"sid": 707348735470312,
+									"parameters": {
+										"tag": "\"bonk\""
+									}
+								},
+								{
+									"id": "play",
+									"objectClass": "audio",
+									"sid": 203380615992698,
+									"parameters": {
+										"audio-file": "bullet_hit",
+										"loop": "not-looping",
+										"volume": "0",
+										"stereo-pan": "0",
+										"tag-optional": "\"bonk\""
+									}
+								}
+							],
+							"sid": 335150913034686
+						}
+					],
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-on-screen",
+							"objectClass": "enemy_turret_bullet",
+							"sid": 371683542501626,
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "enemy_turret_bullet",
+							"sid": 555349654253191
+						}
+					],
+					"sid": 814514187924289
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "enemy_tripleturret",
+							"sid": 512794727977161,
+							"parameters": {
+								"animation": "\"shake\""
+							}
+						},
+						{
+							"id": "compare-animation-frame",
+							"objectClass": "enemy_tripleturret",
+							"sid": 151058591401595,
+							"parameters": {
+								"comparison": 0,
+								"number": "1"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 255490567457011,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-on-screen",
+									"objectClass": "enemy_tripleturret",
+									"sid": 430637025987725
+								},
+								{
+									"id": "trigger-once-while-true",
+									"objectClass": "System",
+									"sid": 651364927469453
+								}
+							],
+							"actions": [
+								{
+									"id": "stop",
+									"objectClass": "audio",
+									"sid": 831723016986317,
+									"parameters": {
+										"tag": "\"charge\""
+									}
+								},
+								{
+									"id": "play",
+									"objectClass": "audio",
+									"sid": 474413755207441,
+									"parameters": {
+										"audio-file": "turret_charge",
+										"loop": "not-looping",
+										"volume": "5",
+										"stereo-pan": "0",
+										"tag-optional": "\"charge\""
+									}
+								}
+							],
+							"sid": 174093635231742
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-animation-finished",
+							"objectClass": "enemy_tripleturret",
+							"sid": 762647179179250,
+							"parameters": {
+								"animation": "\"shake\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "enemy_tripleturret",
+							"sid": 840502340744067,
+							"parameters": {
+								"animation": "\"fire\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "spawn-another-object",
+							"objectClass": "enemy_tripleturret",
+							"sid": 248477710401391,
+							"parameters": {
+								"object": "particle_smoke",
+								"layer": "3",
+								"image-point": "1",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						}
+					],
+					"sid": 294099889799903,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-on-screen",
+									"objectClass": "enemy_tripleturret",
+									"sid": 590596115884424
+								}
+							],
+							"actions": [
+								{
+									"id": "stop",
+									"objectClass": "audio",
+									"sid": 994870194578972,
+									"parameters": {
+										"tag": "\"fire\""
+									}
+								},
+								{
+									"id": "play",
+									"objectClass": "audio",
+									"sid": 895798090197681,
+									"parameters": {
+										"audio-file": "turret_fire",
+										"loop": "not-looping",
+										"volume": "-2",
+										"stereo-pan": "0",
+										"tag-optional": "\"fire\""
+									}
+								}
+							],
+							"sid": 688217207332565
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "spawn-another-object",
+									"objectClass": "enemy_tripleturret",
+									"sid": 621723956069809,
+									"parameters": {
+										"object": "enemy_turret_bullet",
+										"layer": "3",
+										"image-point": "1",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								}
+							],
+							"sid": 199074571675144
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "spawn-another-object",
+									"objectClass": "enemy_tripleturret",
+									"sid": 268090244281427,
+									"parameters": {
+										"object": "enemy_turret_bullet",
+										"layer": "3",
+										"image-point": "1",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "set-angle",
+									"objectClass": "enemy_turret_bullet",
+									"sid": 981707809839208,
+									"parameters": {
+										"angle": "Self.Angle + 3"
+									}
+								}
+							],
+							"sid": 199680138505265
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "spawn-another-object",
+									"objectClass": "enemy_tripleturret",
+									"sid": 230737583539836,
+									"parameters": {
+										"object": "enemy_turret_bullet",
+										"layer": "3",
+										"image-point": "1",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "set-angle",
+									"objectClass": "enemy_turret_bullet",
+									"sid": 727625341229118,
+									"parameters": {
+										"angle": "Self.Angle - 3"
+									}
+								}
+							],
+							"sid": 183087680614479
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-animation-finished",
+							"objectClass": "enemy_tripleturret",
+							"sid": 679231666759246,
+							"parameters": {
+								"animation": "\"fire\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "enemy_tripleturret",
+							"sid": 934169137858010,
+							"parameters": {
+								"animation": "\"shake\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "enemy_tripleturret",
+							"sid": 837039910512731,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"aim\"",
+								"property": "offsetAngle",
+								"end-value": "Self.initialangle + random(-40, 40)",
+								"time": "1.25",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 922605083113480
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "enemy_movingturret",
+							"sid": 117683035990533,
+							"parameters": {
+								"animation": "\"shake\""
+							}
+						},
+						{
+							"id": "compare-animation-frame",
+							"objectClass": "enemy_movingturret",
+							"sid": 875617683909177,
+							"parameters": {
+								"comparison": 0,
+								"number": "1"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 997921080434528,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-on-screen",
+									"objectClass": "enemy_movingturret",
+									"sid": 549373242119611
+								},
+								{
+									"id": "trigger-once-while-true",
+									"objectClass": "System",
+									"sid": 378574395981683
+								}
+							],
+							"actions": [
+								{
+									"id": "stop",
+									"objectClass": "audio",
+									"sid": 598240602925704,
+									"parameters": {
+										"tag": "\"charge\""
+									}
+								},
+								{
+									"id": "play",
+									"objectClass": "audio",
+									"sid": 884199956858611,
+									"parameters": {
+										"audio-file": "turret_charge",
+										"loop": "not-looping",
+										"volume": "5",
+										"stereo-pan": "0",
+										"tag-optional": "\"charge\""
+									}
+								}
+							],
+							"sid": 680373659661936
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-animation-finished",
+							"objectClass": "enemy_movingturret",
+							"sid": 788966674324449,
+							"parameters": {
+								"animation": "\"shake\""
+							}
+						},
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 707653147194035,
+							"parameters": {
+								"object": "enemy_movingturret"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "enemy_movingturret",
+							"sid": 470858892367910,
+							"parameters": {
+								"animation": "\"fire\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "spawn-another-object",
+							"objectClass": "enemy_movingturret",
+							"sid": 504025723054727,
+							"parameters": {
+								"object": "particle_smoke",
+								"layer": "3",
+								"image-point": "1",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "spawn-another-object",
+							"objectClass": "enemy_movingturret",
+							"sid": 250147989976422,
+							"parameters": {
+								"object": "enemy_turret_bullet",
+								"layer": "3",
+								"image-point": "1",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						}
+					],
+					"sid": 308385131617891,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-on-screen",
+									"objectClass": "enemy_movingturret",
+									"sid": 357751114051230
+								}
+							],
+							"actions": [
+								{
+									"id": "stop",
+									"objectClass": "audio",
+									"sid": 202405280980494,
+									"parameters": {
+										"tag": "\"fire\""
+									}
+								},
+								{
+									"id": "play",
+									"objectClass": "audio",
+									"sid": 153870955587093,
+									"parameters": {
+										"audio-file": "turret_fire",
+										"loop": "not-looping",
+										"volume": "-2",
+										"stereo-pan": "0",
+										"tag-optional": "\"fire\""
+									}
+								}
+							],
+							"sid": 560137237802179
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 510593182310223,
+									"parameters": {
+										"seconds": "0.15"
+									}
+								},
+								{
+									"id": "spawn-another-object",
+									"objectClass": "enemy_movingturret",
+									"sid": 424843111765667,
+									"parameters": {
+										"object": "particle_smoke",
+										"layer": "3",
+										"image-point": "1",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "spawn-another-object",
+									"objectClass": "enemy_movingturret",
+									"sid": 831003479398397,
+									"parameters": {
+										"object": "enemy_turret_bullet",
+										"layer": "3",
+										"image-point": "1",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								}
+							],
+							"sid": 690635063277849,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-on-screen",
+											"objectClass": "enemy_movingturret",
+											"sid": 426208820519539
+										}
+									],
+									"actions": [
+										{
+											"id": "stop",
+											"objectClass": "audio",
+											"sid": 409201139142491,
+											"parameters": {
+												"tag": "\"fire\""
+											}
+										},
+										{
+											"id": "play",
+											"objectClass": "audio",
+											"sid": 199739012394946,
+											"parameters": {
+												"audio-file": "turret_fire",
+												"loop": "not-looping",
+												"volume": "-2",
+												"stereo-pan": "0",
+												"tag-optional": "\"fire\""
+											}
+										}
+									],
+									"sid": 401901602597330
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-animation-finished",
+							"objectClass": "enemy_movingturret",
+							"sid": 406797470021114,
+							"parameters": {
+								"animation": "\"fire\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "enemy_movingturret",
+							"sid": 342908769473529,
+							"parameters": {
+								"animation": "\"shake\"",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 712623719976906
+				}
+			],
+			"sid": 901200338745727
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "enemies (unused)",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 389775815006200,
+							"parameters": {
+								"object": "enemy_turret"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 788455583684062,
+					"disabled": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "TARGETS",
+									"sid": 266945324883510,
+									"parameters": {
+										"instance-variable": "targetedby",
+										"comparison": 0,
+										"value": "enemy_turret.UID"
+									}
+								},
+								{
+									"id": "has-los-to-object",
+									"objectClass": "enemy_turret",
+									"sid": 740810679990730,
+									"behaviorType": "LineOfSight",
+									"parameters": {
+										"object": "TARGETS",
+										"image-point": "0"
+									}
+								},
+								{
+									"id": "is-on-screen",
+									"objectClass": "enemy_turret",
+									"sid": 423665861360077
+								}
+							],
+							"actions": [],
+							"sid": 989942246223153,
+							"disabled": true,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-random-instance",
+											"objectClass": "System",
+											"sid": 128848826127684,
+											"disabled": true,
+											"parameters": {
+												"object": "TARGETS"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "rotate-toward-position",
+											"objectClass": "enemy_turret",
+											"sid": 654923821815445,
+											"parameters": {
+												"degrees": "180 * dt",
+												"x": "TARGETS.X",
+												"y": "TARGETS.Y"
+											}
+										}
+									],
+									"sid": 346294062705445,
+									"disabled": true,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "enemy_turret_target",
+													"sid": 296138671812535,
+													"parameters": {
+														"instance-variable": "turret",
+														"comparison": 0,
+														"value": "enemy_turret.UID"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-position",
+													"objectClass": "enemy_turret_target",
+													"sid": 659563402818789,
+													"parameters": {
+														"x": "lerp(Self.X, TARGETS.X, 40 * dt)",
+														"y": "lerp(Self.Y, TARGETS.Y, 40 * dt)"
+													}
+												},
+												{
+													"id": "set-visible",
+													"objectClass": "enemy_turret_target",
+													"sid": 391225004839067,
+													"disabled": true,
+													"parameters": {
+														"visibility": "visible"
+													}
+												}
+											],
+											"sid": 803669915023920,
+											"disabled": true
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "is-animation-playing",
+													"objectClass": "enemy_turret",
+													"sid": 227127006655723,
+													"parameters": {
+														"animation": "\"idle\""
+													}
+												},
+												{
+													"id": "trigger-once-while-true",
+													"objectClass": "System",
+													"sid": 503970319103140,
+													"disabled": true
+												}
+											],
+											"actions": [
+												{
+													"id": "set-animation",
+													"objectClass": "enemy_turret",
+													"sid": 146588488092105,
+													"parameters": {
+														"animation": "\"flash\"",
+														"from": "beginning"
+													}
+												}
+											],
+											"sid": 183603168973261,
+											"disabled": true
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 132846210490042,
+							"parameters": {
+								"object": "enemy_turret_target"
+							}
+						},
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "enemy_turret_target",
+							"sid": 676205816780634,
+							"parameters": {
+								"object": "TARGETS"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 674687441793378,
+					"disabled": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "enemy_turret",
+									"sid": 465466198340791,
+									"parameters": {
+										"unique-id": "enemy_turret_target.turret"
+									}
+								},
+								{
+									"id": "has-los-to-object",
+									"objectClass": "enemy_turret",
+									"sid": 868314920426464,
+									"behaviorType": "LineOfSight",
+									"parameters": {
+										"object": "TARGETS",
+										"image-point": "0"
+									}
+								},
+								{
+									"id": "is-on-screen",
+									"objectClass": "enemy_turret",
+									"sid": 556957534239877
+								}
+							],
+							"actions": [],
+							"sid": 829950616488032,
+							"disabled": true
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 244593338602665,
+							"parameters": {
+								"object": "enemy_turret_target"
+							}
+						},
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "enemy_turret_target",
+							"sid": 237111361887885,
+							"parameters": {
+								"object": "TARGETS"
+							}
+						},
+						{
+							"id": "pick-by-unique-id",
+							"objectClass": "enemy_turret",
+							"sid": 967929152478031,
+							"parameters": {
+								"unique-id": "enemy_turret_target.turret"
+							}
+						},
+						{
+							"id": "has-los-to-object",
+							"objectClass": "enemy_turret",
+							"sid": 357607832750456,
+							"behaviorType": "LineOfSight",
+							"parameters": {
+								"object": "TARGETS",
+								"image-point": "0"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "enemy_turret_target",
+							"sid": 266988692109194,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 695688660000241,
+					"disabled": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 350445560587719,
+							"parameters": {
+								"object": "enemy_turret_target"
+							}
+						},
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "enemy_turret_target",
+							"sid": 919401691563714,
+							"parameters": {
+								"object": "TARGETS"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "enemy_turret_target",
+							"sid": 694742975171006,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 931378255324400,
+					"disabled": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-on-screen",
+							"objectClass": "enemy_turret",
+							"sid": 920903087328211
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 366660072888102
+						}
+					],
+					"actions": [],
+					"sid": 925372743848720,
+					"disabled": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-random-instance",
+									"objectClass": "System",
+									"sid": 118899520724493,
+									"parameters": {
+										"object": "TARGETS"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 585095104606380,
+							"disabled": true,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-on-screen",
+											"objectClass": "TARGETS",
+											"sid": 928114731833031
+										}
+									],
+									"actions": [
+										{
+											"id": "set-instvar-value",
+											"objectClass": "TARGETS",
+											"sid": 965489077467317,
+											"parameters": {
+												"instance-variable": "targetedby",
+												"value": "enemy_turret.UID"
+											}
+										}
+									],
+									"sid": 384398743326526,
+									"disabled": true
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-on-screen",
+											"objectClass": "TARGETS",
+											"sid": 786625922455502,
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "Pick target",
+											"sid": 496752361891141
+										}
+									],
+									"sid": 460636549501149,
+									"disabled": true
+								}
+							]
+						}
+					]
+				},
+				{
+					"functionName": "Pick target",
+					"functionDescription": "Draw a random target for a Turret enemy.",
+					"functionCategory": "Targeting",
+					"functionReturnType": "none",
+					"functionCopyPicked": true,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 525122185418552,
+					"disabled": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-random-instance",
+									"objectClass": "System",
+									"sid": 457177363083919,
+									"parameters": {
+										"object": "TARGETS"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 508516240874902,
+							"disabled": true,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-on-screen",
+											"objectClass": "TARGETS",
+											"sid": 517315834793797
+										}
+									],
+									"actions": [
+										{
+											"id": "set-instvar-value",
+											"objectClass": "TARGETS",
+											"sid": 608027472883126,
+											"parameters": {
+												"instance-variable": "targetedby",
+												"value": "enemy_turret.UID"
+											}
+										}
+									],
+									"sid": 233971816827750,
+									"disabled": true
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-on-screen",
+											"objectClass": "TARGETS",
+											"sid": 504372540489642,
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "Pick target",
+											"sid": 928541889160550
+										}
+									],
+									"sid": 272678784393548,
+									"disabled": true
+								}
+							]
+						}
+					]
+				}
+			],
+			"sid": 677637782673035
+		}
+	],
+	"sid": 825602819865673
+}

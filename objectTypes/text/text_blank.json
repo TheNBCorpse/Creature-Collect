@@ -1,0 +1,28 @@
+{
+	"name": "text_blank",
+	"plugin-id": "Spritefont2",
+	"sid": 130651128010147,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 636804266715228
+		}
+	],
+	"effectTypes": [],
+	"image": {
+		"width": 780,
+		"height": 150,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"fileType": "image/png",
+		"imageSpriteId": 2689905,
+		"useCollisionPoly": true,
+		"tag": ""
+	}
+}
